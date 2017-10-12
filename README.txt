@@ -10,7 +10,7 @@ you need to do to get up and running.
     a) Inside of the client directory, run "npm start". This will spin up a react server
         which you should be able to reach at "localhost:3000"
         
-    b) Inside of the server directory, run "node app.js" (this command will change soon). This 
+    b) Inside of the server directory, run "nodemon server.js" (this command will change soon). This 
         will spin up a very siple server that outputs to the consol 
         and renders a blank webpage at "localhost:4200"
         
