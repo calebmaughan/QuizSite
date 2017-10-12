@@ -1,4 +1,4 @@
-After forking and pulling this down to your local repository, there are two main things
+After pulling this down to your local repository, there are two main things
 you need to do to get up and running. 
 
 1) Inside of both the client and server directories, run "npm install". This will install
