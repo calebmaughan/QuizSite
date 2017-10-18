@@ -6,21 +6,45 @@ After pulling this down to your local repository, there are two main things
 you need to do to get up and running.
 
 * Inside of both the client and server directories, run `npm install`. This will install
-    all of the dependencies required by the package.json files in each directory.
+    all of the dependencies required by the `package.json` files in each directory.
 
 * Test to make sure that everything is working correctly.
 
   * Inside of the client directory, run `npm start`. This will spin up a react server
-        which you should be able to reach at "localhost:3000"
+        which you should be able to reach at `localhost:3000`
 
   * Inside of the server directory, run `npm start`. This will spin up a very simple
-        server that outputs to the console and renders a blank webpage at "localhost:3001"
+        server that outputs to the console and renders a blank webpage at `localhost:3001`
 
+## Testing Our API
+There are several simple API calls that have been implemented (these by no means will
+be in the final product). Here is how you test them:
+
+1. Make sure that your local repo is up to date... duh
+2. Make sure you have [Postman](https://www.getpostman.com/) installed... It's a beautiful program :')
+3. Spin up the Express server (ie. `npm start` in the server directory)
+4. In Postman, select the type of CRUD action you'd like to perform and the
+URL `localhost:3001/api/users`. When performing a POST or PUT, ensure that in
+Postman Body>x-www-form-urlencoded is selected. Oh, and don't forget to enter key value
+pairs that you want to POST or PUT. This is important!! Now you can POST, PUT, GET
+and DELETE away!!
+
+Note: You are performing CRUD operations on my mLab database. Go ahead and make your own
+and change the username and password in line 8 of `server.js`.
+`mongoose.connect('mongodb://<username>:<password>@ds117485.mlab.com:17485/live-polling-test')`
+
+Let's add a bit of API and model documentation for quick reference.
+
+## API Documentation
+Add some shiz here....
+
+## Model Documentation
+More shiz belongs here too...
 
 ## Committing Rules
-1. When committing your code, do not include the "node_modules" files in either directory. These
+1. When committing your code, do not include the `node_modules` files in either directory. These
 are installed when running the `npm install` command. However, when you add a new node modules,
-make sure you run `npm install <module name> --save`. This will save the module name in the package.json
+make sure you run `npm install <module name> --save`. This will save the module name in the `package.json`
 file and allow us to easily keep track of dependencies.
 
 
