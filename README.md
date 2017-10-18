@@ -24,22 +24,28 @@ be in the final product). Here is how you test them:
 2. Make sure you have [Postman](https://www.getpostman.com/) installed... It's a beautiful program :')
 3. Spin up the Express server (ie. `npm start` in the server directory)
 4. In Postman, select the type of CRUD action you'd like to perform and the
-URL `localhost:3001/api/users`. When performing a POST or PUT, ensure that in
+URL `localhost:3001/users`. When performing a POST or PUT, ensure that in
 Postman Body>x-www-form-urlencoded is selected. Oh, and don't forget to enter key value
 pairs that you want to POST or PUT. This is important!! Now you can POST, PUT, GET
 and DELETE away!!
 
 Note: You are performing CRUD operations on my mLab database. Go ahead and make your own
-and change the username and password in line 8 of `server.js`.
-`mongoose.connect('mongodb://<username>:<password>@ds117485.mlab.com:17485/live-polling-test')`
+database and include it in line 4 of `db.js`.
 
 Let's add a bit of API and model documentation for quick reference.
 
 ## API Documentation
-Add some shiz here....
+### API Construction
+When developing APIs for this project, there are several things to keep in mind. We want
+all router module (API calls at different routes) to be stored in `/server/src/routes`.
+Their name should be descriptive (ex. `userRouter.js` or `quizRouter.js`). Make sure
+that you've required the proper models in each router module. Also make sure that
+you've required the router module in server.js. Try to make them reusable and extensible,
+it might be useful to call router modules from inside other router modules. We'll
+have to look into this though.
 
 ## Model Documentation
-More shiz belongs here too...
+### Model Construction
 
 ## Committing Rules
 1. When committing your code, do not include the `node_modules` files in either directory. These
