@@ -27,7 +27,6 @@ router.route('/')
     user.name = req.body.name;
     user.password = req.body.password;
 
-
     user.save(function(err) {
       if (err)
         res.send(err);
