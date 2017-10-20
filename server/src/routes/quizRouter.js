@@ -1,30 +1,23 @@
 var express     = require('express');
 var app         = express();
 var bodyParser  = require('body-parser');
-
 // Import user models
 var Quiz        = require('./../models/quiz.js');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 // Create an instance of Router
 var router = express.Router();
-
-// This runs at all '/users' calls
+// This runs at all '/quiz' calls
 router.use(function(req, res, next) {
   console.log(">> You be doin' stuff to the quizzes");
   next();
 });
-
 ////////////////////////////////////////////////////////////////////////////////
 router.route('/')
-.post(function(req, res) {
 
+.post(function(req, res) {
   var quiz = new Quiz();
   quiz.questions=req.body.questions;
-
-
   user.save(function(err) {
     if (err)
       res.send(err);
@@ -32,6 +25,7 @@ router.route('/')
     res.json({message: '>> A quiz was created'});
   });
 })
+
 .get(function(req, res) {
   Quiz.find(function(err, users) {
     if (err)
@@ -50,14 +44,13 @@ router.route('/:quiz_id')
       res.json(quiz)
     });
   })
+
   .put(function(req, res) {
     Quiz.findById(req.params.quiz_id, function(err, quiz) {
       if (err)
         res.send(err)
 
       quiz.questions = req.body.questions;
-    
-
       quiz.save(function(err) {
         if (err)
           send(err);
@@ -66,6 +59,7 @@ router.route('/:quiz_id')
       });
     });
   })
+
   .delete(function(req, res) {
     Quiz.remove({
       _id: req.params.quiz_id
@@ -77,6 +71,5 @@ router.route('/:quiz_id')
     });
   });
   ////////////////////////////////////////////////////////////////////////////////
-
   // This must be included or you can't require in server.js
   module.exports = router;
