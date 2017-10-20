@@ -63,6 +63,7 @@ file and allow us to easily keep track of dependencies.
 #### React:
 * https://reactjs.org/
 * https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/
+* https://scotch.io/tutorials/routing-react-apps-the-complete-guide
 
 #### API Building:
 * [Look at this!!](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4#toc-want-more-mean-setting-up-a-mean-stack-single-page-application-build-a-restful-api-using-node-and-express-4-using-gruntjs-in-a-mean-stack-application-authenticate-a-node-api-with-tokens)

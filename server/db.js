@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose  = require('mongoose');
+var config    = require('./config/index')
 
 // The URI we will be connecting to. Change this as needed.
 var dbURI = 'mongodb://tpollick:apassword@ds117485.mlab.com:17485/live-polling-test';
