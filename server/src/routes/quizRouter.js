@@ -23,7 +23,6 @@ router.route('/')
 
   var quiz = new Quiz();
   quiz.questions=req.body.questions;
-  quiz.quizLogin = req.body.quizLogin;
 
 
   user.save(function(err) {
@@ -57,8 +56,7 @@ router.route('/:quiz_id')
         res.send(err)
 
       quiz.questions = req.body.questions;
-      console.log(req.body.questions);
-      quiz.quizLogin = req.body.quizLogin;
+    
 
       quiz.save(function(err) {
         if (err)
