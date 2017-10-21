@@ -3,18 +3,20 @@ import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { browserHistory, Router } from 'react-router';
-import routes from './routes.js';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHashHistory from 'history/createHashHistory';
 // import registerServiceWorker from './registerServiceWorker';
+
+import Base from './components/Base.js';
 
 injectTapEventPlugin();
 
+const history = createHashHistory();
+
 ReactDOM.render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
-    <Router history={ browserHistory } routes={routes} />
+    <Router history={history}>
+      <Route path="/" component={Base}/>
+    </Router>
   </MuiThemeProvider>
-), document.getElementById('react-app'));
-
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+), document.getElementById('root'));
