@@ -19,7 +19,6 @@ module.exports = new PassportLocalStrategy({
 
   return User.findOne({ email: userData.email }, (err, user) => {
     if (err) { return done(err); }
-
     // find user by email adress
     if (!user) {
       var error = new Error('Incorrect email or password');

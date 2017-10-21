@@ -64,6 +64,9 @@ file and allow us to easily keep track of dependencies.
 * https://reactjs.org/
 * https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/
 * https://scotch.io/tutorials/routing-react-apps-the-complete-guide
+* https://www.codementor.io/tamizhvendan/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr
+* https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a
+* https://reactjs.org/docs/typechecking-with-proptypes.html
 
 #### API Building:
 * [Look at this!!](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4#toc-want-more-mean-setting-up-a-mean-stack-single-page-application-build-a-restful-api-using-node-and-express-4-using-gruntjs-in-a-mean-stack-application-authenticate-a-node-api-with-tokens)
@@ -71,3 +74,6 @@ file and allow us to easily keep track of dependencies.
 
 #### Database:
 * https://mlab.com
+
+#### Authentication
+* https://vladimirponomarev.com/blog/authentication-in-react-apps-jwt

@@ -42,14 +42,14 @@ function validateLoginForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0) {
     isFormValid = false;
-    errors.email = 'Please provide your email address.';
+    errors.email = 'Please provide a correct email address.';
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
     isFormValid = false;
-    errors.password = 'Please provide your password.';
+    errors.password = 'Password must have at least 8 characters.';
   }
 
   if (!isFormValid) {
@@ -102,12 +102,13 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+
   var validationResult = validateLoginForm(req.body);
   if (!validationResult.sucess) {
     return res.status(400).json({
       sucess:   false,
       message:  validationResult.message,
-      errors:   validationResult.console.error
+      errors:   validationResult.errors
     });
   }
 
@@ -116,7 +117,7 @@ router.post('/login', (req, res, next) => {
       if (err.name === 'IncorrectCredentialsError') {
         return res.status(400).json({
           sucess:   false,
-          message:  err.message
+          message:  "Invalid email or password."
         });
       }
 

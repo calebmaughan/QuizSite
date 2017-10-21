@@ -30,7 +30,7 @@ var LoginForm = ({
         <TextField
           floatingLabelText="Password"
           name="password"
-          // type="password"
+          type="password"
           onChange={onChange}
           errorText={errors.password}
           value={user.password}

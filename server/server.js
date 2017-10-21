@@ -19,11 +19,11 @@ var authCheckMiddleware = require('./src/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 
 // We need to exactly figure out what CORS does
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
+//   next();
+// });
 
 // Keep this for now. It might help with debuging //
 // var router = express.Router();

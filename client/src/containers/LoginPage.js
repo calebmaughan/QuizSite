@@ -33,8 +33,35 @@ class LoginPage extends React.Component {
   processForm(event) {
     event.preventDefault();
 
-    console.log('email:', this.state.user.email);
-    console.log('password', this.state.user.password);
+    const email = encodeURIComponent(this.state.user.email);
+    const password = encodeURIComponent(this.state.user.password);
+    const formData = `email=${email}&password=${password}`;
+
+    // This is an AJAX request to our backend
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/auth/login');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+
+    // This allows for asynchronous acess of data
+    xhr.addEventListener('load', () => {
+      if (xhr.satus === 200) {
+        // success
+        // change the component state
+
+        this.setState({
+          errors: {}
+        });
+      } else {
+        // failure
+        const errors = xhr.response.errors ? xhr.response.errors : {};
+        errors.summary = xhr.response.message;
+        this.setState({
+          errors
+        });
+      }
+    });
+    xhr.send(formData);
   }
 
   render() {
