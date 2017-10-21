@@ -42,7 +42,7 @@ function validateLoginForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim() === 0) {
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
     isFormValid = false;
     errors.email = 'Please provide a correct email address.';
   }
@@ -102,11 +102,11 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-
   var validationResult = validateLoginForm(req.body);
-  if (!validationResult.sucess) {
+
+  if (!validationResult.success) {
     return res.status(400).json({
-      sucess:   false,
+      success:   false,
       message:  validationResult.message,
       errors:   validationResult.errors
     });
@@ -116,19 +116,19 @@ router.post('/login', (req, res, next) => {
     if(err) {
       if (err.name === 'IncorrectCredentialsError') {
         return res.status(400).json({
-          sucess:   false,
+          success:   false,
           message:  "Invalid email or password."
         });
       }
 
       return res.status(400).json({
-        sucess: false,
+        success: false,
         message: 'Could not process the form.'
       });
     }
 
     return res.json({
-      sucess:   true,
+      success:   true,
       message:  'You have sucessfully logged in!',
       token,
       user: userData
