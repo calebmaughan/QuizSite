@@ -2,10 +2,8 @@ var mongoose = require('mongoose');
 
 // The URI we will be connecting to. Change this as needed.
 var dbURI = 'mongodb://tpollick:apassword@ds117485.mlab.com:17485/live-polling-test';
-
 // Create the connection
 mongoose.connect(dbURI);
-
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function() {
