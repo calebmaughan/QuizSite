@@ -18,11 +18,14 @@ you need to do to get up and running.
 
 ## Major Additions
 (10/21/2017)
-Ok, so I added a MAJOR amount of code. We now have user login and authentication capabilities. I added this because I thought it would help us in keeping track of sessions.
-Now we should build our API such that the base routes verify user tokens. That is
+Ok, so I added a MAJOR amount of code. We now have user login and authentication capabilities. I added this because I thought it would help us in keeping track of sessions. Now we should build our API such that the base routes verify user tokens. That is
 a simple modification in  `server.js`. It would probably take several hours for you to
 go through the code. By all means, do it! However, if you'd like, I can explain the basics
-during class.
+during class. If you find bugs with the login process, let me know.
+
+Oh and to make developing a UI easier, use Material-UI. It is a set of beautiful
+React components developed by Google. Take a gander at some of the files in our
+project's component directory to see how they work. [Material-UI](http://www.material-ui.com/#/).
 
 
 ## Testing Our API
@@ -41,7 +44,6 @@ and DELETE away!!
 Note: You are performing CRUD operations on my mLab database. Go ahead and make your own
 database and include it in line 4 of `db.js`.
 
-Let's add a bit of API and model documentation for quick reference.
 
 ## API Documentation
 ### API Construction

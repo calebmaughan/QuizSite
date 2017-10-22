@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link, NavLink, Switch, Route } from 'react-router-dom';
 
 import Auth from '../modules/Auth';
@@ -11,11 +12,9 @@ import LoginPage from '../containers/LoginPage.js';
 import SignUpPage from '../containers/SignUpPage.js';
 
 
-const deauthenticate = () => {
-  Auth.deauthenticateUser();
-}
-
-var Base = () => (
+var Base = ({
+  onLogout
+}) => (
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
@@ -24,7 +23,7 @@ var Base = () => (
 
       { Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
-          <Link to="/logout">Logout</Link>
+          <Link to="/logout" onClick={onLogout}>Logout</Link>
         </div>
       ) : (
         <div className="top-bar-right">
@@ -43,14 +42,14 @@ var Base = () => (
       )}
       <Route  path="/login" component={LoginPage}/>
       <Route  path="/signup" component={SignUpPage}/>
-      <Route  path="/logout" component={LoginPage} onEnter={deauthenticate} />
+      <Route  path="/logout" component={LoginPage}/>
     </Switch>
 
   </div>
 );
 
-// Base.propTypes = {
-//   children: PropTypes.object.isRequired
-// };
+Base.propTypes = {
+  onLogout: PropTypes.func.isRequired
+};
 
 export default Base;
