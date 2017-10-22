@@ -15,6 +15,7 @@ var localLoginStrategy  = require('./src/passport/local-login');
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
+
 var authCheckMiddleware = require('./src/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 
@@ -43,6 +44,15 @@ app.use('/api', apiRouter);
 // app.use('/users', userRouter);
 // app.use('/template', templateRouter);
 
+
+//example use of saving a new quiz
+
+// var awesomeQuiz = new Quiz({ questions:[{id:1 , question:"is this a question?"},{id:2 , question:"is this another question?"}] });
+// // Save the new model instance, passing a callback
+// awesomeQuiz.save(function (err) {
+//   if (err) return handleError(err);
+//   // saved!
+// });
 // Start the server
 app.listen(3001, () => {
   console.log(">> Magic happens on port here!");
