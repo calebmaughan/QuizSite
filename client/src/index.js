@@ -7,7 +7,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 // import registerServiceWorker from './registerServiceWorker';
 
-import Base from './components/Base.js';
+import BasePage from './containers/BasePage.js';
 
 injectTapEventPlugin();
 
@@ -16,7 +16,7 @@ const history = createBrowserHistory();
 ReactDOM.render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={history}>
-      <Route path="/" component={Base}/>
+      <Route path="/" component={BasePage}/>
     </Router>
   </MuiThemeProvider>
 ), document.getElementById('root'));
