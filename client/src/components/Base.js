@@ -49,7 +49,7 @@ var Base = ({
 );
 
 Base.propTypes = {
-  children: PropTypes.object.isRequired
+  onLogout: PropTypes.func.isRequired
 };
 
 export default Base;

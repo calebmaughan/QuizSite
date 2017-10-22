@@ -66,7 +66,7 @@ router.route('/:user_id')
         res.send(err)
 
       user.name = req.body.name;
-      user.password = req.body.password;
+      // user.password = req.body.password; // Need to setup hash
 
       user.save(function(err) {
         if (err)

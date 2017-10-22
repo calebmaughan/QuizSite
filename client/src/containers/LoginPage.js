@@ -54,8 +54,7 @@ class LoginPage extends React.Component {
           errors: {}
         });
 
-        Auth.authenticateUser(xhr.response.token);
-        console.log(this.props.history);
+        Auth.authenticateUser(xhr.response.token, xhr.response.user.id);
         this.props.history.push('/');
       } else {
         // failure

@@ -8,7 +8,8 @@ var UserSchema = new Schema({
     index: { unique: true }
   },
   password: String,
-  name:     String
+  name:     String,
+  quizList: [String]
 });
 
 // Compare the passed password with the value in the database. A model method.

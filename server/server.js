@@ -15,34 +15,19 @@ var localLoginStrategy  = require('./src/passport/local-login');
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
-
+// This is a user authentication step
 var authCheckMiddleware = require('./src/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
+app.use('/users', authCheckMiddleware);
 
-// We need to exactly figure out what CORS does
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
-//   next();
-// });
-
-// Keep this for now. It might help with debuging //
-// var router = express.Router();
-// router.use(function(req, res, next) {
-//   console.log('>> %s %s', req.method, req.path);
-//   next();
-// });
-////////////////////////////////////////////////////
 
 // ALL API ROUTERS GO HERE
-var authRouter      = require('./src/routes/auth');
+var authRouter      = require('./src/routes/auth');       // Used for login and signup
 var apiRouter       = require('./src/routes/api');
-// var userRouter      = require('./src/routes/userRouter');
-// var templateRouter  = require('./src/routes/template');
+var userRouter      = require('./src/routes/userRouter');
 app.use('/auth', authRouter);
 app.use('/api', apiRouter);
-// app.use('/users', userRouter);
-// app.use('/template', templateRouter);
+app.use('/users', userRouter);
 
 
 //example use of saving a new quiz
