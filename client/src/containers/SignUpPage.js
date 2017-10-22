@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import { withRouter } from 'react-router-dom';
 import SignUpForm from '../components/SignUpForm.js';
 
 
 class SignUpPage extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       errors: {},
@@ -43,21 +44,23 @@ class SignUpPage extends React.Component {
     xhr.open('post', '/auth/signup');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
-    
+
     // This allows for asynchronous acess of data
     xhr.addEventListener('load', () => {
-      if (xhr.satus === 200) {
+      if (xhr.status === 200) {
         // success
-        // change the component state
 
+        // change the component state
         this.setState({
           errors: {}
         });
+
+        localStorage.setItem('successMessage', xhr.response.message);
+        this.props.history.push("/login");
       } else {
         // failure
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
-
         this.setState({
           errors
         });

@@ -16,6 +16,15 @@ you need to do to get up and running.
   * Inside of the server directory, run `npm start`. This will spin up a very simple
         server that outputs to the console and renders a blank webpage at `localhost:3001`
 
+## Major Additions
+(10/21/2017)
+Ok, so I added a MAJOR amount of code. We now have user login and authentication capabilities. I added this because I thought it would help us in keeping track of sessions.
+Now we should build our API such that the base routes verify user tokens. That is
+a simple modification in  `server.js`. It would probably take several hours for you to
+go through the code. By all means, do it! However, if you'd like, I can explain the basics
+during class.
+
+
 ## Testing Our API
 There are several simple API calls that have been implemented (these by no means will
 be in the final product). Here is how you test them:
@@ -67,6 +76,7 @@ file and allow us to easily keep track of dependencies.
 * https://www.codementor.io/tamizhvendan/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr
 * https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a
 * https://reactjs.org/docs/typechecking-with-proptypes.html
+* https://themeteorchef.com/tutorials/getting-started-with-react-router-v4
 
 #### API Building:
 * [Look at this!!](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4#toc-want-more-mean-setting-up-a-mean-stack-single-page-application-build-a-restful-api-using-node-and-express-4-using-gruntjs-in-a-mean-stack-application-authenticate-a-node-api-with-tokens)

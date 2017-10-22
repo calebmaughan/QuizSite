@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import LoginForm from '../components/LoginForm.js';
+import Auth from '../modules/Auth.js';
 
 
 class LoginPage extends React.Component {
@@ -45,13 +46,17 @@ class LoginPage extends React.Component {
 
     // This allows for asynchronous acess of data
     xhr.addEventListener('load', () => {
-      if (xhr.satus === 200) {
+      if (xhr.status === 200) {
         // success
         // change the component state
 
         this.setState({
           errors: {}
         });
+
+        Auth.authenticateUser(xhr.response.token);
+        console.log(this.props.history);
+        this.props.history.push('/');
       } else {
         // failure
         const errors = xhr.response.errors ? xhr.response.errors : {};
