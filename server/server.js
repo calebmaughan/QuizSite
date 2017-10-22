@@ -1,22 +1,30 @@
 var express     = require('express');
+var bodyParser  = require('body-parser');
+var passport    = require('passport');
+
+// connect to the database
+require('./db.js');
+require('./src/models/user');
+
 var app         = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 
-// Require database and all necessary routers
-var db          = require('./db.js');
-var User = require('./src/models/user.js');
-var Quiz = require('./src/models/quiz.js');
-var userRouter  = require('./src/routes/userRouter');
-var quizRouter  = require('./src/routes/quizRouter');
-var templateRouter  = require('./src/routes/template');
+var localSignupStrategy = require('./src/passport/local-signup');
+var localLoginStrategy  = require('./src/passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 
-// Set the port
-var port = process.env.PORT || 3001;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
-  next();
-});
+var authCheckMiddleware = require('./src/middleware/auth-check');
+app.use('/api', authCheckMiddleware);
+
+// We need to exactly figure out what CORS does
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
+//   next();
+// });
 
 // Keep this for now. It might help with debuging //
 // var router = express.Router();
@@ -27,9 +35,15 @@ app.use(function(req, res, next) {
 ////////////////////////////////////////////////////
 
 // ALL API ROUTERS GO HERE
-app.use('/users', userRouter);
-app.use('/quizzes', quizRouter);
-app.use('/template', templateRouter);
+var authRouter      = require('./src/routes/auth');
+var apiRouter       = require('./src/routes/api');
+// var userRouter      = require('./src/routes/userRouter');
+// var templateRouter  = require('./src/routes/template');
+app.use('/auth', authRouter);
+app.use('/api', apiRouter);
+// app.use('/users', userRouter);
+// app.use('/template', templateRouter);
+
 
 //example use of saving a new quiz
 
@@ -40,5 +54,6 @@ app.use('/template', templateRouter);
 //   // saved!
 // });
 // Start the server
-app.listen(port);
-console.log(">> Magic happens on port " + port);
+app.listen(3001, () => {
+  console.log(">> Magic happens on port here!");
+});
