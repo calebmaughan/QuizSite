@@ -8,22 +8,21 @@ class DashboardPage extends React.Component {
     super(props);
 
     this.state = {
-      secretData: '',
-      quizList: []
+      secretData: ''
     };
   }
 
   componentDidMount() {
     const xhr = new XMLHttpRequest();
-    xhr.open('get', '/users/'+Auth.getUserId());
+    xhr.open('get', '/api/dashboard');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
+        // console.log(xhr.response);
         this.setState({
-          secretData: xhr.response.name,
-          quizList: xhr.response.quizList
+          secretData: xhr.response.name
         })
       }
     });

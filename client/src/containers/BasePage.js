@@ -16,9 +16,7 @@ class BasePage extends React.Component {
 
   render() {
     return (
-      <Base
-        onLogout={this.deauthenticateUser}
-      />
+      <Base onLogout={this.deauthenticateUser} />
     );
   }
 }
