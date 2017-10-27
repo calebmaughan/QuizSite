@@ -1,0 +1,43 @@
+html body{
+	margin:0px;
+	padding:0px;
+}
+body{
+	background-color: #50808E;
+}
+#container{
+	border-radius: 25px;
+	width: 800px;
+	margin-left: auto;
+	margin-right:auto;
+	background-color: #A0E8AF;
+}
+
+ul{
+	border-radius: 25px 25px 0px 0px;
+	list-style-type: none;
+	background-color: #55D6BE;
+	margin:0;
+	padding: 0;
+	overflow: hidden;
+	
+}
+.navitem{
+	float:left;
+}
+.navitem .navlink{
+	display:block;
+	padding: 14px;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	font-family: georgia;
+}
+.navitem .navlink:hover{
+	background-color: #55D6BE;
+	color: black;
+}
+#quizDiv{
+	background-color: white;
+	height: 300px;
+}
