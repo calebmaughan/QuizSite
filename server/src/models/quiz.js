@@ -1,7 +1,19 @@
 var mongoose    = require('mongoose');
 var Schema = mongoose.Schema;
 var QuizSchema = new Schema({
-  questions: [{question:String}],
+  //holds an array of questions
+  questions: [String],
+  //holds an array of answers where indices of an array match a question
+  answers: [[String]],
+  //tells us which question we are on
+  onQuestion: {type:Number, default: 0},
+  //tells us how big the quiz is
+  maxSize: {type:Number, default: 0},
+
+  isPublished: {type:Boolean, default: false},
+  isTaken: {type:Boolean, default: false},
+  quizAccessID: String
+
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);
