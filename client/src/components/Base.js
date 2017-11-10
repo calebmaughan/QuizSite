@@ -18,7 +18,7 @@ var Base = ({
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <NavLink to="/">React App</NavLink>
+        <NavLink to="/">TRCKBLMP</NavLink>
       </div>
 
       { Auth.isUserAuthenticated() ? (
