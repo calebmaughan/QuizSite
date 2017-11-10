@@ -5,6 +5,7 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
+
 class QuizListPage extends React.Component {
 
   constructor(props) {
@@ -17,6 +18,7 @@ class QuizListPage extends React.Component {
     this.onStart = this.onStart.bind(this);
     this.onEdit = this.onEdit.bind(this);
   }
+
 
   componentDidMount() {
     const xhr = new XMLHttpRequest();
