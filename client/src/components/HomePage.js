@@ -3,9 +3,13 @@ import { Card, CardTitle } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const HomePage = () => (
+const HomePage = ({
+    onSubmit,
+    quizId
+}) => (
   <Card className='container'>
     <CardTitle title="Home Page" subtitle="Enter a quiz ID to take a quiz"/>
+    <form action='/' onSubmit={onSubmit}>
     <div>
       <TextField
         floatingLabelText = "Quiz ID"
@@ -15,6 +19,7 @@ const HomePage = () => (
     <div>
       <RaisedButton type="submit" label="Submit" primary />
     </div>
+    </form>
   </Card>
 );
 
