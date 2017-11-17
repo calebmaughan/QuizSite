@@ -6,10 +6,12 @@ import Auth from '../modules/Auth';
 
 import '../static/css/style.css';
 
-import HomePage from './HomePage.js';
 import DashboardPage from '../containers/DashboardPage.js';
 import LoginPage from '../containers/LoginPage.js';
 import SignUpPage from '../containers/SignUpPage.js';
+import Home from '../containers/Home.js';
+import TakeQuiz from '../components/TakeQuiz.js';
+import TakePage from '../containers/TakePage.js';
 
 
 var Base = ({
@@ -38,11 +40,12 @@ var Base = ({
       { Auth.isUserAuthenticated() ? (
         <Route exact path="/" component={DashboardPage}/>
       ) : (
-        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/" component={Home}/>
       )}
       <Route  path="/login" component={LoginPage}/>
       <Route  path="/signup" component={SignUpPage}/>
       <Route  path="/logout" component={LoginPage}/>
+      <Route  path="/take" component={TakePage}/>
     </Switch>
 
   </div>
