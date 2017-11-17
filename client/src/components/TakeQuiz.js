@@ -4,11 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 const TakeQuiz = ({
-
+    quiz
 
 }) =>(
   <Card className="container">
-    <CardTitle title = "Question here"/>
+    <CardTitle title = {quiz.id}/>
     <form>
     <div>
       <RaisedButton className = "answer" type = 'submit' label = 'answer 1'/>

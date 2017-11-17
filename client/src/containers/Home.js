@@ -3,6 +3,7 @@ import { Card, CardTitle } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import HomePage from '../components/HomePage.js';
+import Auth2 from '../modules/Auth2.js';
 
 class Home extends React.Component{
   constructor(props){
@@ -10,7 +11,7 @@ class Home extends React.Component{
 
     this.state = {
       quizID:{
-        id: ' '
+        id: '1234'
       }
     };
 
@@ -30,7 +31,8 @@ class Home extends React.Component{
 
   submitForm(event){
     const id = this.state.quizID.id;
-    this.props.history.push("/take");
+    Auth2.setquizID(id);
+    this.props.history.push('/take');
   }
 
   render() {
