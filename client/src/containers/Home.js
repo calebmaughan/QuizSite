@@ -15,18 +15,30 @@ class Home extends React.Component{
     };
 
     this.submitForm = this.submitForm.bind(this);
+    this.changeID = this.changeID.bind(this);
 
+  }
+  changeID(event) {
+    var field = event.target.name;
+    var quizId = this.state.quizID;
+    quizId[field] = event.target.value;
+
+    this.setState({
+      quizId
+    });
   }
 
   submitForm(event){
-    console.log('route to quiz here');
+    const id = this.state.quizID.id;
+    this.props.history.push("/take");
   }
 
   render() {
     return (
       <HomePage
         onSubmit={this.submitForm}
-        quizID={this.state.quizID}
+        quizId={this.state.quizID}
+        changeID={this.changeID}
       />
     );
   }

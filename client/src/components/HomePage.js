@@ -5,7 +5,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const HomePage = ({
     onSubmit,
-    quizId
+    quizId,
+    changeID
 }) => (
   <Card className='container'>
     <CardTitle title="Home Page" subtitle="Enter a quiz ID to take a quiz"/>
@@ -14,6 +15,8 @@ const HomePage = ({
       <TextField className='text-center'
         floatingLabelText = "Quiz ID"
         name="id"
+        value={quizId.id}
+        onChange={changeID}
         />
     </div>
     <div>
