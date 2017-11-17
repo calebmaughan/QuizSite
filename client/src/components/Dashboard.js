@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import RaisedButton  from 'material-ui/RaisedButton';
 import QuizListPage from '../containers/QuizListPage';
-
 const Dashboard = ({
   secretData,
 }) => (
