@@ -11,6 +11,7 @@ import LoginPage from '../containers/LoginPage.js';
 import SignUpPage from '../containers/SignUpPage.js';
 import Home from '../containers/Home.js';
 import TakeQuiz from '../components/TakeQuiz.js';
+import TakePage from '../containers/TakePage.js';
 
 
 var Base = ({
@@ -44,7 +45,7 @@ var Base = ({
       <Route  path="/login" component={LoginPage}/>
       <Route  path="/signup" component={SignUpPage}/>
       <Route  path="/logout" component={LoginPage}/>
-      <Route  path="/take" component={TakeQuiz}/>
+      <Route  path="/take" component={TakePage}/>
     </Switch>
 
   </div>

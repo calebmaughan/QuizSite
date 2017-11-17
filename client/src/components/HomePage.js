@@ -9,7 +9,7 @@ const HomePage = ({
 }) => (
   <Card className='container'>
     <CardTitle title="Home Page" subtitle="Enter a quiz ID to take a quiz"/>
-    <form action='/' onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
     <div>
       <TextField
         floatingLabelText = "Quiz ID"
