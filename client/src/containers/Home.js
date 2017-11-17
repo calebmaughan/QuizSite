@@ -14,18 +14,18 @@ class Home extends React.Component{
       }
     };
 
-    this.processForm = this.processForm.bind(this);
+    this.submitForm = this.submitForm.bind(this);
 
   }
 
-  processForm(event){
+  submitForm(event){
     console.log('route to quiz here');
   }
 
   render() {
     return (
       <HomePage
-        onSubmit={this.processForm}
+        onSubmit={this.submitForm}
         quizID={this.state.quizID}
       />
     );

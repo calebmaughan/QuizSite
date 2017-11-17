@@ -11,7 +11,7 @@ const HomePage = ({
     <CardTitle title="Home Page" subtitle="Enter a quiz ID to take a quiz"/>
     <form onSubmit={onSubmit}>
     <div>
-      <TextField
+      <TextField className='text-center'
         floatingLabelText = "Quiz ID"
         name="id"
         />
