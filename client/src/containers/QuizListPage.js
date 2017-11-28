@@ -14,7 +14,7 @@ class QuizListPage extends React.Component {
     this.state = {
       quizList: []
     };
-
+    this.onView=this.onView.bind(this);
     this.onStart = this.onStart.bind(this);
     this.onEdit = this.onEdit.bind(this);
   }
@@ -36,7 +36,9 @@ class QuizListPage extends React.Component {
     });
     xhr.send();
   }
-
+  onView(id){
+    console.log('Bout to view ' + id);
+  }
   onEdit(id) {
 
     console.log('You gon edit dis here quiz ' + id);
@@ -50,6 +52,7 @@ class QuizListPage extends React.Component {
     return (
       <QuizList
         quizList = {this.state.quizList}
+        onView={this.onView}
         onStart = {this.onStart}
         onEdit = {this.onEdit}
       />
