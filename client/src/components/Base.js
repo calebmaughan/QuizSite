@@ -20,17 +20,17 @@ var Base = ({
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <NavLink to="/">TRCKBLMP</NavLink>
+        <NavLink to="/" style={{ textDecoration: 'none' }}>TRCKBLMP</NavLink>
       </div>
 
       { Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
-          <Link to="/logout" onClick={onLogout}>Logout</Link>
+          <Link to="/logout" onClick={onLogout} style={{ textDecoration: 'none' }}>Logout</Link>
         </div>
       ) : (
         <div className="top-bar-right">
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/login" style={{ textDecoration: 'none' }}>Login</Link>
+          <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link>
         </div>
       )}
 

@@ -1,12 +1,15 @@
 body {
    margin: 0;
    font-size: 16px;
+   background-image: url(../photo/pac.jpeg);
+   background-size: cover;
+   background-repeat: initial;
  }
 
 a {
   color: #00bcd4;
-  font-weight: bold;
-  text-decoration: none;
+  font-weight: bold;Signup
+  text-decoration: none !important;
   transition: color 0.4s;
 }
 
@@ -68,12 +71,24 @@ a:hover {
 .answer{
   margin: 5px;
 }
+.sub {
+  padding: 10px;
+}
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
+    body {
+      margin: 0;
+      font-size: 16px;
+      background-image: url(../photo/pac.jpeg);
+      background-size: initial;
+      background-repeat: repeat;
+      background-position: center;
+    }
     .container {
       margin: 0 auto;
       text-align: center;
-      width: 100%;
+      width: 90%;
+      background-color:
     }
 }

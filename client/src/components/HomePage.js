@@ -19,7 +19,7 @@ const HomePage = ({
         onChange={changeID}
         />
     </div>
-    <div>
+    <div className='sub'>
       <RaisedButton type="submit" label="Submit" primary />
     </div>
     </form>
