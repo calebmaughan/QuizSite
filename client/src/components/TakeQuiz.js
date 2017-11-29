@@ -8,7 +8,7 @@ const TakeQuiz = ({
 
 }) =>(
   <Card className="container" style={{borderRadius: '25px'}}>
-    <CardTitle title = {quiz.id}/>
+    <CardTitle className="title" title = {quiz.id} titleColor = "#E4EEFF"/>
     <form>
     <div>
       <RaisedButton className = "answer" type = 'submit' label = 'answer 1' primary/>
