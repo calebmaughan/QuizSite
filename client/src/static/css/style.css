@@ -13,7 +13,7 @@ a {
 }
 
 a:hover {
-  color: #1976d2;
+  color: #04001B;
 }
 
 a:visited {
@@ -73,7 +73,7 @@ h2 {
 
 .error-message {
   padding: 0 16px;
-  color: '#430B25';
+  color: 'black';
 }
 
 .success-message {
