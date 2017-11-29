@@ -5,7 +5,7 @@ var passport    = require('passport');
 require('./db.js');
 require('./src/models/user');
 require('./src/models/quiz');
-//var Quiz        = require('./src/models/quiz.js');
+var Quiz        = require('./src/models/quiz.js');
 var app         = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -33,14 +33,14 @@ app.use('/users', userRouter);
 app.use('/quizzes', quizRouter);
 
 //example use of saving a new quiz
-//var questionArray=["is this a question?"];
-//var answers=[["maybe","yessir","probably","nada homey"]];
- //var awesomeQuiz = new Quiz({questions:questionArray,answers:answers,quizAccessID: 12345});
-// // Save the new model instance, passing a callback
- //awesomeQuiz.save(function (err) {
-  // if (err) return handleError(err);
+var questionArray=["is this a question?"];
+var answers=[["maybe","yessir","probably","nada homey"]];
+var awesomeQuiz = new Quiz({questions:questionArray,answers:answers,quizAccessID: 12345});
+ // Save the new model instance, passing a callback
+awesomeQuiz.save(function (err) {
+if (err) return handleError(err);
 //   // saved!
- //});
+});
 // Start the server
 app.listen(3001, () => {
   console.log(">> Magic happens on port here!");
