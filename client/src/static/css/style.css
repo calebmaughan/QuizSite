@@ -38,7 +38,7 @@ h2 {
   display: block;
   clear: both;
 }
-
+1234
 .top-bar-left {
   float: left;
   font-size: 1.5em;
@@ -101,7 +101,5 @@ h2 {
       margin: 0 auto;
       text-align: center;
       width: 90%;
-
-
     }
 }
