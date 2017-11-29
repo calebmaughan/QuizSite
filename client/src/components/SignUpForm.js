@@ -52,7 +52,7 @@ var SignUpForm = ({
         <RaisedButton type="submit" label="Create New Account" primary />
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Login</Link></CardText>
+      <CardText>Already have an account? <Link to={'/login'} style={{ textDecoration: 'none' }}>Login</Link></CardText>
     </form>
   </Card>
 )

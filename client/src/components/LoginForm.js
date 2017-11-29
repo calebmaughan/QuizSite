@@ -42,7 +42,7 @@ var LoginForm = ({
         <RaisedButton type="submit" label="Login" primary />
       </div>
 
-      <CardText>Dont have an account? <Link to={'/signup'} style={{ textDecoration: 'none' }}>Signup</Link></CardText>
+      <CardText className="cardtext">Dont have an account? <Link to={'/signup'} style={{ textDecoration: 'none' }}>Signup</Link></CardText>
     </form>
   </Card>
 )

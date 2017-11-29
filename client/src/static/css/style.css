@@ -22,6 +22,7 @@ a:visited {
 
 h2 {
   font-family: Palatino;
+  color: #E4EEFF
 }
 
 .text-center {
@@ -58,14 +59,13 @@ h2 {
   text-align: center;
   width: 700px;
   font-family: Palatino;
-  background-image: url(../photo/block.png);
-  background-size: auto;
-  background-position: center;
+
 }
 
 .card-heading {
   padding: 16px;
 }
+
 
 .field-line, .button-line {
   padding: 16px;
@@ -73,7 +73,7 @@ h2 {
 
 .error-message {
   padding: 0 16px;
-  color: tomato;
+  color: '#430B25';
 }
 
 .success-message {
@@ -101,7 +101,7 @@ h2 {
       margin: 0 auto;
       text-align: center;
       width: 90%;
-      background-image: url(../photo/block.png);
+
 
     }
 }
