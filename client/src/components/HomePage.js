@@ -9,7 +9,7 @@ const HomePage = ({
     changeID
 }) => (
   <Card className='container' style={{borderRadius: '25px'}}>
-    <CardTitle title="TRCK BLMP" subtitle="Enter a quiz ID to take a quiz"/>
+    <CardTitle title="TRCK BLMP" subtitle="Enter a quiz ID to take a quiz" Secondary />
     <form onSubmit={onSubmit}>
     <div>
       <TextField className='text-center'

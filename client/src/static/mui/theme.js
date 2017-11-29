@@ -9,8 +9,9 @@ exports.default = {
   borderRadius: 2,
   palette: {
     primary1Color: '#3935A1',
+    primary2Color: '#E4EEFF',
     canvasColor:'#7B8EFD',
-    textColor: '#E4EEFF',
+    textColor: '#3935A1',
     alternateTextColor: '#E4EEFF',
 
   }
