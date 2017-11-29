@@ -19,7 +19,7 @@ passport.use('local-login', localLoginStrategy);
 var authCheckMiddleware = require('./src/middleware/auth-check');
 app.use('/api', authCheckMiddleware);
 app.use('/users', authCheckMiddleware);
-app.use('/quizzes', authCheckMiddleware);
+//app.use('/quizzes', authCheckMiddleware);
 
 
 // ALL API ROUTERS GO HERE
@@ -33,14 +33,13 @@ app.use('/users', userRouter);
 app.use('/quizzes', quizRouter);
 
 //example use of saving a new quiz
-var questionArray=["is this a question?"];
-var answers=[["maybe","yessir","probably","nada homey"]];
-var awesomeQuiz = new Quiz({questions:questionArray,answers:answers,quizAccessID: 12345});
+//var answers=[["maybe","yessir","probably","nada homey"]];
+//var awesomeQuiz = new Quiz({questions:questionArray,answers:answers,quizAccessID: 12345});
  // Save the new model instance, passing a callback
-awesomeQuiz.save(function (err) {
-if (err) return handleError(err);
+//awesomeQuiz.save(function (err) {
+//if (err) return handleError(err);
 //   // saved!
-});
+//});
 // Start the server
 app.listen(3001, () => {
   console.log(">> Magic happens on port here!");
