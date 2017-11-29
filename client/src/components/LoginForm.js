@@ -11,7 +11,7 @@ var LoginForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
+  <Card className="container" style={{borderRadius: '25px'}}>
     <form action='/' onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
 

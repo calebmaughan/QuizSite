@@ -8,7 +8,7 @@ const HomePage = ({
     quizId,
     changeID
 }) => (
-  <Card className='container'>
+  <Card className='container' style={{borderRadius: '25px'}}>
     <CardTitle title="TRCK BLMP" subtitle="Enter a quiz ID to take a quiz"/>
     <form onSubmit={onSubmit}>
     <div>

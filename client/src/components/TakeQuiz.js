@@ -7,7 +7,7 @@ const TakeQuiz = ({
     quiz
 
 }) =>(
-  <Card className="container">
+  <Card className="container" style={{borderRadius: '25px'}}>
     <CardTitle title = {quiz.id}/>
     <form>
     <div>
