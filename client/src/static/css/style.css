@@ -1,12 +1,12 @@
 body {
    margin: 0;
    font-size: 16px;
-   background-image: url(../photo/bubble.png);
+   background-image: url(../photo/block.png);
    background-repeat: initial;
  }
 
 a {
-  color: #00bcd4;
+  color: #E4EEFF;
   font-weight: bold;Signup
   text-decoration: none !important;
   transition: color 0.4s;
@@ -14,6 +14,14 @@ a {
 
 a:hover {
   color: #1976d2;
+}
+
+a:visited {
+  text-decoration: none !important
+}
+
+h2 {
+  font-family: Palatino;
 }
 
 .text-center {
@@ -33,6 +41,7 @@ a:hover {
 .top-bar-left {
   float: left;
   font-size: 1.5em;
+  font-family: Palatino;
 }
 
 .top-bar-right {
@@ -48,6 +57,10 @@ a:hover {
   margin: 0 auto;
   text-align: center;
   width: 700px;
+  font-family: Palatino;
+  background-image: url(../photo/block.png);
+  background-size: auto;
+  background-position: center;
 }
 
 .card-heading {
@@ -79,7 +92,7 @@ a:hover {
     body {
       margin: 0;
       font-size: 16px;
-      background-image: url(../photo/bubble.png);
+      background-image: url(../photo/block.png);
       background-size: initial;
       background-repeat: repeat;
       background-position: center;
@@ -88,6 +101,7 @@ a:hover {
       margin: 0 auto;
       text-align: center;
       width: 90%;
-      background-color:
+      background-image: url(../photo/block.png);
+
     }
 }
