@@ -22,6 +22,7 @@ var LoginForm = ({
           floatingLabelText="Email"
           name="email"
           errorText={errors.email}
+          errorStyle={{color: '#A10559'}}
           onChange={onChange}
           value={user.email}
         />
@@ -34,6 +35,7 @@ var LoginForm = ({
           type="password"
           onChange={onChange}
           errorText={errors.password}
+          errorStyle={{color: '#A10559'}}
           value={user.password}
         />
       </div>
