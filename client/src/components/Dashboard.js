@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 import RaisedButton  from 'material-ui/RaisedButton';
 import QuizListPage from '../containers/QuizListPage';
@@ -11,7 +12,9 @@ const Dashboard = ({
       subtitle="You should get access to this page only after authentication."
     />
     {secretData && <CardText style={{ fontSize: '16px', color: 'green'}}>{secretData}</CardText>}
-    <RaisedButton label="Make Quiz" primary={true} style={{margin:12}}/>
+    <Link to='/edit'>
+      <RaisedButton label="Make Quiz" primary={true} style={{margin:12}}/>
+    </Link>
     <QuizListPage />
   </Card>
 );

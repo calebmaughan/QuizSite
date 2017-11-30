@@ -58,6 +58,7 @@ class LoginPage extends React.Component {
         this.props.history.push('/');
       } else {
         // failure
+        console.log(errors);
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
         this.setState({

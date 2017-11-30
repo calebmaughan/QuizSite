@@ -12,6 +12,7 @@ import SignUpPage from '../containers/SignUpPage.js';
 import Home from '../containers/Home.js';
 import TakeQuiz from '../components/TakeQuiz.js';
 import TakePage from '../containers/TakePage.js';
+import EditQuizPage from '../containers/EditQuizPage.js';
 
 
 var Base = ({
@@ -38,7 +39,10 @@ var Base = ({
 
     <Switch>
       { Auth.isUserAuthenticated() ? (
-        <Route exact path="/" component={DashboardPage}/>
+        <Switch>
+          <Route exact path="/" component={DashboardPage}/>
+          <Route path="/edit" component={EditQuizPage}/>
+        </Switch>
       ) : (
         <Route exact path="/" component={Home}/>
       )}

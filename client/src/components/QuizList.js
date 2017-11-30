@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -13,10 +14,12 @@ const QuizList = ({
     <Paper zDepth={2}>
       {quizList.map((quizId,i) => (
         <div  key={i}>
-          <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
+          <Link to='/edit'>
+            <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
+          </Link>
           <div>
-          <RaisedButton label={'Start'} hoverColor="#23c2db" backgroundColor="#ccc4c3" Secondary={true}  onClick={onStart.bind(this, quizId)}/>
-          <RaisedButton label={'Edit'}  Secondary={true}  onClick={onEdit.bind(this, quizId)}/>
+            <RaisedButton label={'Start'} hoverColor="#23c2db" backgroundColor="#ccc4c3" Secondary={true}  onClick={onStart.bind(this, quizId)}/>
+            <RaisedButton label={'Edit'}  Secondary={true}  onClick={onEdit.bind(this, quizId)}/>
           </div>
           <Divider/>
         </div>
