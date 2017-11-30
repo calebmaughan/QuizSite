@@ -32,6 +32,7 @@ class Home extends React.Component{
   submitForm(event){
     const id = this.state.quizID.id;
     Auth2.setquizID(id);
+    Auth2.setQuizQuestion(0);
     this.props.history.push('/take');
   }
 
