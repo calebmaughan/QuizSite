@@ -4,11 +4,12 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import HomePage from '../components/HomePage.js';
 import Auth2 from '../modules/Auth2.js';
+import TestPage from '../components/TestPage.js';
 
 class Home extends React.Component{
   constructor(props){
-    super(props);
 
+    super(props);
     this.state = {
       quizID:{
         id: '1234'
