@@ -5,7 +5,7 @@ import QuizListPage from '../containers/QuizListPage';
 const Dashboard = ({
   secretData,
 }) => (
-  <Card className="container">
+  <Card className="container" style={{borderRadius: '25px'}}>
     <CardText
       title="Dashboard"
       subtitle="You should get access to this page only after authentication."

@@ -11,7 +11,7 @@ var SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
+  <Card className="container" style={{borderRadius: '25px'}}>
     <form action='/' onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
@@ -22,6 +22,7 @@ var SignUpForm = ({
           floatingLabelText="Name"
           name="name"
           errorText={errors.name}
+          errorStyle={{color: '#A10559'}}
           onChange={onChange}
           value={user.name}
         />
@@ -32,6 +33,7 @@ var SignUpForm = ({
           floatingLabelText="Email"
           name="email"
           errorText={errors.email}
+          errorStyle={{color: '#A10559'}}
           onChange={onChange}
           value={user.email}
         />
@@ -44,6 +46,7 @@ var SignUpForm = ({
           name="password"
           onChange={onChange}
           errorText={errors.password}
+          errorStyle={{color: '#A10559'}}
           value={user.password}
         />
       </div>
@@ -52,7 +55,7 @@ var SignUpForm = ({
         <RaisedButton type="submit" label="Create New Account" primary />
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Login</Link></CardText>
+      <CardText>Already have an account? <Link to={'/login'} style={{ textDecoration: 'none' }}>Login</Link></CardText>
     </form>
   </Card>
 )

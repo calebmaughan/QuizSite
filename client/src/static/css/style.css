@@ -1,19 +1,28 @@
 body {
    margin: 0;
    font-size: 16px;
-   background-image: url(../photo/bubble.png);
+   background-image: url(../photo/block.png);
    background-repeat: initial;
  }
 
 a {
-  color: #00bcd4;
+  color: #E4EEFF;
   font-weight: bold;Signup
   text-decoration: none !important;
   transition: color 0.4s;
 }
 
 a:hover {
-  color: #1976d2;
+  color: #04001B;
+}
+
+a:visited {
+  text-decoration: none !important
+}
+
+h2 {
+  font-family: Palatino;
+  color: #E4EEFF
 }
 
 .text-center {
@@ -29,10 +38,11 @@ a:hover {
   display: block;
   clear: both;
 }
-
+1234
 .top-bar-left {
   float: left;
   font-size: 1.5em;
+  font-family: Palatino;
 }
 
 .top-bar-right {
@@ -48,11 +58,13 @@ a:hover {
   margin: 0 auto;
   text-align: center;
   width: 700px;
+  font-family: Palatino;
 }
 
 .card-heading {
   padding: 16px;
 }
+
 
 .field-line, .button-line {
   padding: 16px;
@@ -60,7 +72,7 @@ a:hover {
 
 .error-message {
   padding: 0 16px;
-  color: tomato;
+  color: 'black';
 }
 
 .success-message {
@@ -79,7 +91,7 @@ a:hover {
     body {
       margin: 0;
       font-size: 16px;
-      background-image: url(../photo/bubble.png);
+      background-image: url(../photo/block.png);
       background-size: initial;
       background-repeat: repeat;
       background-position: center;
@@ -88,6 +100,5 @@ a:hover {
       margin: 0 auto;
       text-align: center;
       width: 90%;
-      background-color:
     }
 }
