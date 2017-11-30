@@ -5,12 +5,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const TakeQuiz = ({
     quiz,
-    answers
+    answers,
+    next
 
 }) =>(
   <Card className="container">
     <CardTitle title = {quiz.id}/>
-    <form>
+    <form onSubmit={next}>
     <div>
       <RaisedButton className = "answer" type = 'submit' label = {answers.a1} primary/>
       <RaisedButton className = "answer" type = 'submit' label = {answers.a2} primary/>
