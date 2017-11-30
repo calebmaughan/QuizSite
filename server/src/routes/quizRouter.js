@@ -55,13 +55,30 @@ router.route('/')
 // makes an empty quiz with default values
 //returns the quiz id.
   .post(function(req, res) {
-      quizAccessID=quiz.ObjectId.substr(quiz.ObjectId.length - 5);
+
+    console.log(req.body.questions);
+    console.log(req.body.answers);
+
+      var quiz = new Quiz();
+      quiz.questions = req.body.questions;
+      quiz.answers = JSON.parse(req.body.answers);
+
+      console.log(quiz);
+
       quiz.save(function(err) {
-        if (err)
-          send(err);
-        console.log(">> Quiz " + req.params.quiz_id + " was updated");
-        res.json({ message: ">> Quiz " + req.params.quiz_id + " was updated"});
+        if(err)
+          res.send(err);
+        console.log('>> A quiz was created!');
+        res.json({quiz_id: quiz.id});
       });
+
+      // quizAccessID=quiz.ObjectId.substr(quiz.ObjectId.length - 5);
+      // quiz.save(function(err) {
+      //   if (err)
+      //     send(err);
+      //   console.log(">> Quiz " + req.params.quiz_id + " was updated");
+      //   res.json({ message: ">> Quiz " + req.params.quiz_id + " was updated"});
+      // });
     });
 router.route('/:quiz_id')
   // Get by quiz_id

@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from '../modules/Auth';
+import Auth2 from '../modules/Auth2';
 import QuizList from '../components/QuizList.js';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
@@ -14,7 +15,7 @@ class QuizListPage extends React.Component {
     this.state = {
       quizList: []
     };
-    this.onView=this.onView.bind(this);
+    this.onView = this.onView.bind(this);
     this.onStart = this.onStart.bind(this);
     this.onEdit = this.onEdit.bind(this);
   }
@@ -40,8 +41,8 @@ class QuizListPage extends React.Component {
     console.log('Bout to view ' + id);
   }
   onEdit(id) {
-
     console.log('You gon edit dis here quiz ' + id);
+    Auth2.setquizID(id);
   }
 
   onStart(event) {

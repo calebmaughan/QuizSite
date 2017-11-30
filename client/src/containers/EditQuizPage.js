@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import Auth2 from '../modules/Auth2.js';
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
@@ -127,12 +128,22 @@ class EditQuizPage extends React.Component {
   constructor(props) {
     super(props);
 
+    // this.state = {
+    //   questions: [],
+    //   answers: [[]]
+    // }
+
     this.state = {
-      questions : QUIZ.questions,
+      questions: QUIZ.questions,
       answers: QUIZ.answers
     }
 
+    if (Auth2.getquizID()) {
+      console.log(Auth2.getquizID());
+    }
+
     this.addQuestion = this.addQuestion.bind(this);
+    this.saveQuiz = this.saveQuiz.bind(this);
     this.changeQuestion = this.changeQuestion.bind(this);
     this.changeAnswer = this.changeAnswer.bind(this);
   }
@@ -149,6 +160,29 @@ class EditQuizPage extends React.Component {
     this.setState({
       questions
     });
+  }
+
+  saveQuiz(event) {
+    event.preventDefault();
+
+    console.log(this.state.questions);
+    console.log(this.state.answers);
+
+    const questions = encodeURIComponent(this.state.questions);
+    const answers = encodeURIComponent(JSON.stringify(this.state.answers));
+    const form = `questions=${questions}&answers=${answers}`;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', '/quizzes');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        console.log(xhr.response.quiz_id);
+      }
+    });
+    xhr.send(form);
   }
 
   changeAnswer(event, question) {
@@ -193,6 +227,10 @@ class EditQuizPage extends React.Component {
           label={"Add Question"}
           onClick={this.addQuestion}
         />
+      <FlatButton
+        label={"Save"}
+        onClick={this.saveQuiz}
+      />
       </Card>
     )
   }
