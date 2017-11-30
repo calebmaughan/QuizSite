@@ -33,7 +33,8 @@ app.use('/users', userRouter);
 app.use('/quizzes', quizRouter);
 
 //example use of saving a new quiz
-//var answers=[["maybe","yessir","probably","nada homey"]];
+//var questionArray=["this is the first question", "this is the second question"];
+//var answers=[["maybe","yessir","probably","nada homey"],["answer1", "answer 2", "answer 3", "answer 4"]];
 //var awesomeQuiz = new Quiz({questions:questionArray,answers:answers,quizAccessID: 12345});
  // Save the new model instance, passing a callback
 //awesomeQuiz.save(function (err) {

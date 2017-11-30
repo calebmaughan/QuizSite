@@ -8,6 +8,7 @@ import Auth2 from '../modules/Auth2.js';
 class TakePage extends React.Component{
 
 
+
   constructor(props){
       super(props);
 
@@ -20,12 +21,23 @@ class TakePage extends React.Component{
           a2:'',
           a3:'',
           a4:''
-        }
+        },
+
       };
+      this.nextQuestion = this.nextQuestion.bind(this);
 
   }
+
+  nextQuestion(event){
+    var question = Auth2.getQuizQuestion();
+    question++;
+    Auth2.setQuizQuestion(question);
+    this.props.history.push('/take');
+  }
+
   componentDidMount(){
-    console.log("this is only a test");
+    var quest = Auth2.getQuizQuestion();
+
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/quizzes/' + Auth2.getquizID());
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -35,17 +47,23 @@ class TakePage extends React.Component{
       console.log(xhr.status);
       console.log("test3");
       if (xhr.status === 200) {
-        console.log("test2");
+        var total = xhr.response.questions.length;
+        if (quest == total){
+          this.props.history.push('/');
+        }
+        else{
+        console.log(xhr.response.questions.length);
         var qid1 = this.state.quiz;
         var answers = this.state.answers;
-        qid1['id'] = xhr.response.questions[0];
-        answers['a1'] = xhr.response.answers[0][0];
-        answers['a2'] = xhr.response.answers[0][1];
-        answers['a3'] = xhr.response.answers[0][2];
-        answers['a4'] = xhr.response.answers[0][3];
+        qid1['id'] = xhr.response.questions[quest];
+        answers['a1'] = xhr.response.answers[quest][0];
+        answers['a2'] = xhr.response.answers[quest][1];
+        answers['a3'] = xhr.response.answers[quest][2];
+        answers['a4'] = xhr.response.answers[quest][3];
         this.setState({
           qid1
         });
+        }
       }
     });
     xhr.send();
@@ -56,6 +74,7 @@ class TakePage extends React.Component{
       <TakeQuiz
         quiz={this.state.quiz}
         answers={this.state.answers}
+        next = {this.nextQuestion}
       />
     );
   }

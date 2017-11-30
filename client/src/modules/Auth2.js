@@ -7,5 +7,12 @@ class Auth2{
     return localStorage.getItem('quizID');
   }
 
+  static getQuizQuestion(){
+    return localStorage.getItem('question');
+  }
+  static setQuizQuestion(q){
+    localStorage.setItem('question', q)
+  }
+
 }
 export default Auth2;
