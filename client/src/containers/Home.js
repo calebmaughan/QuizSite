@@ -11,7 +11,7 @@ class Home extends React.Component{
     super(props);
     this.state = {
       quizID:{
-        id: '1234'
+        id: ''
       }
     };
 
