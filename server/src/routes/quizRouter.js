@@ -63,7 +63,11 @@ router.route('/')
 
       quiz.questions = JSON.parse(req.body.questions);
       quiz.answers = JSON.parse(req.body.answers);
-
+      console.log("this is what you want: "+JSON.parse(req.body.questions).length);
+      for(var i=0;i<JSON.parse(req.body.questions).length;i++){
+        console.log("postin hard");
+      quiz.answersClickNumber.push([0,0,0,0])
+    }
       console.log(quiz);
 
       quiz.save(function(err) {
@@ -102,7 +106,10 @@ router.route('/:quiz_id')
         console.log(quiz);
         quiz.questions = JSON.parse(req.body.questions);
         quiz.answers = JSON.parse(req.body.answers);
-
+        while(quiz.answersClickNumber.length<JSON.parse(req.body.questions).length){
+          console.log("put it");
+          quiz.answersClickNumber.push([0,0,0,0])
+        }
         quiz.save(function(err) {
           if(err)
             res.send(err);

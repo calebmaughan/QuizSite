@@ -22,7 +22,7 @@ class ResultsPage extends React.Component{
   }
   componentDidMount(){
     console.log("this is a test for results page");
-    console.log(ResultAuth.getquizID());
+    console.log("quiz ID: "+ResultAuth.getquizID());
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/quizzes/' + ResultAuth.getquizID());
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -32,10 +32,10 @@ class ResultsPage extends React.Component{
       console.log(xhr.status);
       console.log("test3");
       if (xhr.status === 200) {
-        console.log(xhr.response.quizAccessID);
-        console.log(xhr.response.answers);
-        console.log(xhr.response.questions);
-        console.log(xhr.response.answersClickNumber);
+        console.log("access ID: "+xhr.response.quizAccessID);
+        console.log("answers: "+xhr.response.answers);
+        console.log("questions: "+xhr.response.questions);
+        console.log("answersClicked number: "+xhr.response.answersClickNumber);
 
 
         this.setState({

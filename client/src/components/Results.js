@@ -28,24 +28,24 @@ const Results = ({
 
 
            <div>
-           <RaisedButton label={"Answer: "+answers[i][0] } disableTouchRipple={true} >
-          {"Number Of times Clicked: "+answersClickNumber[i][0]}
+           <RaisedButton label={answers[i][0] } disableTouchRipple={true} >
+          {answersClickNumber[i][0]}
            </RaisedButton>
            </div>
            <div>
-            <RaisedButton label={"Answer: "+answers[i][1] } disableTouchRipple={true} backgroundColor="#aeb7c4">
-           {"Number Of times Clicked: "+answersClickNumber[i][1]}
+            <RaisedButton label={answers[i][1] } disableTouchRipple={true} backgroundColor="#aeb7c4">
+           {answersClickNumber[i][1]}
            </RaisedButton>
            </div>
 
            <div>
-           <RaisedButton label={"Answer: "+answers[i][2] } disableTouchRipple={true} >
-          {"Number Of times Clicked: "+answersClickNumber[i][2]}
+           <RaisedButton label={answers[i][2] } disableTouchRipple={true} >
+          {answersClickNumber[i][2]}
            </RaisedButton>
            </div>
            <div>
-           <RaisedButton label={"Answer: "+answers[i][3] } disableTouchRipple={true} backgroundColor="#aeb7c4" >
-          {"Number Of times Clicked: "+answersClickNumber[i][3]}
+           <RaisedButton label={answers[i][3] } disableTouchRipple={true} backgroundColor="#aeb7c4" >
+          {answersClickNumber[i][3]}
            </RaisedButton>
            </div>
 

@@ -20,7 +20,6 @@ const QuizList = ({
             </Link>
 
 
-          <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
 
           <div>
 
