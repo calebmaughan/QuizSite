@@ -151,7 +151,7 @@ class EditQuizPage extends React.Component {
 
     this.state = {
       questions: [],
-      answers: []
+      answers: [[]]
     }
 
     this.addQuestion = this.addQuestion.bind(this);
