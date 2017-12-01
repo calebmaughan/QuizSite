@@ -15,6 +15,9 @@ class QuizListPage extends React.Component {
     this.state = {
       quizList: []
     };
+
+    Auth2.removeQuizId();
+
     this.onView = this.onView.bind(this);
     this.onStart = this.onStart.bind(this);
     this.onEdit = this.onEdit.bind(this);

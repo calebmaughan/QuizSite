@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import Auth from '../modules/Auth.js';
 import Auth2 from '../modules/Auth2.js';
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
@@ -114,44 +115,43 @@ class QuestionCard extends React.Component {
   }
 }
 
-var QUIZ = {
-  questions: ["Question1", "Question2", "Question3", "Question4"],
-  answers:[
-    ["answer1", "answer2", "answer3", "answer4"],
-    ["answer5", "answer6", "answer7", "answer8"],
-    ["answer9", "answer10", "answer11", "answer12"],
-    ["answer13", "answer14", "answer15", "answer16"]
-  ]
-}
-
 function makeAPIRequest(type, path, form) {
-  const xhr = new XMLHttpRequest();
-  xhr.open(type, path);
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-  xhr.responseType = 'json';
+  return new Promise(function(resolve, reject) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(type, path);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
 
-  xhr.addEventListener('load', ()=> {
-    return {status: xhr.status, response: xhr.response}
+    xhr.addEventListener('load', ()=> {
+      resolve({status: xhr.status, response: xhr.response});
+    });
+    xhr.send(form);
   });
-  xhr.send(form);
 };
+
+function makeAPIRequestAuth(type, path, form) {
+  return new Promise(function(resolve, reject) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(type, path);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+
+    xhr.responseType = 'json';
+
+    xhr.addEventListener('load', ()=> {
+      resolve({status: xhr.status, response: xhr.response});
+    });
+    xhr.send(form);
+  });
+}
 
 class EditQuizPage extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   questions: [],
-    //   answers: [[]]
-    // }
-
     this.state = {
-      questions: QUIZ.questions,
-      answers: QUIZ.answers
-    }
-
-    if (Auth2.getquizID()) {
-      console.log(Auth2.getquizID());
+      questions: [],
+      answers: [[]]
     }
 
     this.addQuestion = this.addQuestion.bind(this);
@@ -161,7 +161,27 @@ class EditQuizPage extends React.Component {
   }
 
   componentDidMount() {
-    // Put db call here
+    if (Auth2.getquizID() != null) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('get', '/quizzes/'+Auth2.getquizID());
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+
+      xhr.addEventListener('load', ()=> {
+        // resolve({status: xhr.status, response: xhr.response});
+        console.log(xhr.response);
+        this.setState({
+          questions : xhr.response.questions,
+          answers : xhr.response.answers
+        })
+      });
+      xhr.send();
+    } else {
+      this.setState({
+        questions: [],
+        answers: [[]]
+      })
+    }
   }
 
   changeQuestion(event) {
@@ -172,31 +192,6 @@ class EditQuizPage extends React.Component {
     this.setState({
       questions
     });
-  }
-
-  saveQuiz(event) {
-    event.preventDefault();
-
-    console.log(this.state.questions);
-    console.log(this.state.answers);
-
-    const questions = encodeURIComponent(this.state.questions);
-    const answers = encodeURIComponent(JSON.stringify(this.state.answers));
-    const form = `questions=${questions}&answers=${answers}`;
-
-    var xhrResponse = makeAPIRequest('post', '/quizzes', form);
-
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('post', '/quizzes');
-    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // xhr.responseType = 'json';
-    //
-    // xhr.addEventListener('load', () => {
-    //   if (xhr.status === 200) {
-    //     console.log(xhr.response.quiz_id);
-    //   }
-    // });
-    // xhr.send(form);
   }
 
   changeAnswer(event, question) {
@@ -222,6 +217,42 @@ class EditQuizPage extends React.Component {
       answers : joinedAnswers
     });
   }
+
+  saveQuiz(event) {
+    event.preventDefault();
+
+    console.log(this.state.questions);
+
+    const questions = encodeURIComponent(JSON.stringify(this.state.questions));
+    const answers = encodeURIComponent(JSON.stringify(this.state.answers));
+    var form = `questions=${questions}&answers=${answers}`;
+
+    if (Auth2.getquizID() == null) {
+      makeAPIRequest('post', '/quizzes', form).then(function(quizResponse) {
+        if (quizResponse.status === 200) {
+          let quiz_id = quizResponse.response.quiz_id
+          quiz_id = encodeURIComponent(quiz_id);
+          form = `quiz_id=${quiz_id}`;
+          makeAPIRequestAuth('put', '/users/'+Auth.getUserId()+'/addQuiz', form)
+            .then(function(userResponse) {
+              console.log(userResponse);
+            });
+        }
+      });
+    } else {
+      makeAPIRequest('put', '/quizzes/'+Auth2.getquizID(), form).then(function(quizResponse) {
+        if (quizResponse.status === 200) {
+          let quiz_id = quizResponse.response.quiz_id
+          quiz_id = encodeURIComponent(quiz_id);
+          form = `quiz_id=${quiz_id}`;
+          makeAPIRequestAuth('put', '/users/'+Auth.getUserId()+'/addQuiz', form)
+            .then(function(userResponse) {
+              console.log(userResponse);
+            });
+          }
+        });
+      }
+}
 
 
   render() {
