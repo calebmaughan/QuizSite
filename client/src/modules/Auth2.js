@@ -14,5 +14,12 @@ class Auth2{
     localStorage.setItem('question', q)
   }
 
+  static setRunning(x){
+    localStorage.setItem('running', x)
+  }
+  static getRunning(){
+    return localStorage.getItem('running')
+  }
+
 }
 export default Auth2;

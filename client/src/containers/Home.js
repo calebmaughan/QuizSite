@@ -37,6 +37,10 @@ class Home extends React.Component{
   }
 
   render() {
+    if(Auth2.getRunning() == '1'){
+      Auth2.setRunning('0');
+      window.location.reload();
+    }
     return (
       <HomePage
         onSubmit={this.submitForm}

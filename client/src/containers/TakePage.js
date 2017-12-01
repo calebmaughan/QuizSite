@@ -30,6 +30,8 @@ class TakePage extends React.Component{
 
       };
       this.nextQuestion = this.nextQuestion.bind(this);
+      this.testfunc = this.testfunc.bind(this);
+      //this.state = this.state.bind(this);
 
 
   }
@@ -40,34 +42,37 @@ class TakePage extends React.Component{
     Auth2.setQuizQuestion(question);
   }
 
+  testfunc(){
+    Auth2.setRunning('1');
+    var sync = this.state.synced;
+    var qid1 = this.state.quiz;
+    var answers = this.state.answers;
 
-
-  componentDidMount(){
-    setInterval(()=>{
     var quest = Auth2.getQuizQuestion();
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/quizzes/' + Auth2.getquizID());
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
-    console.log(xhr.status);
+
     xhr.addEventListener('load', () => {
+      console.log(Auth2.getquizID());
+      console.log(xhr.status);
       if (xhr.status === 200) {
+
         var total = xhr.response.questions.length;
         var currentQuestion = xhr.response.onQuestion;
         if (quest >= total){
-          var sync2 = this.state.synced;
-          sync2['value'] = '1';
+
+
+          sync['value'] = '1';
           this.setState({
-            sync2
+            sync
           });
         }
         else{
           if(currentQuestion == quest){
 
-            console.log(xhr.response.questions.length);
-            var qid1 = this.state.quiz;
-            var answers = this.state.answers;
-            var sync = this.state.synced;
+
             sync['value'] = '0';
             qid1['id'] = xhr.response.questions[quest];
             answers['a1'] = xhr.response.answers[quest][0];
@@ -80,31 +85,41 @@ class TakePage extends React.Component{
             });
           }
           else{
-            //console.log("test for false");
-            var sync1 = this.state.synced;
-            //console.log(sync1);
-            sync1['value'] = '2';
-            //console.log(sync1);
+
+
+
+            sync['value'] = '2';
+
             this.setState({
-              sync1
+              sync
             });
-            //console.log(this.state.synced);
+
           }
         }
+
+      }
+      else{
+        console.log("failure");
+
+        this.props.history.push('/');
       }
     });
-    console.log("test1");
+
     xhr.send();
-  }, 500);
-  //use this layout!!!
-//  setInterval(()=>{
-  //  console.log(this.state.synced);
-//  }, 500);
+
+
+  }
+
+
+
+  componentDidMount(){
+    setInterval(this.testfunc, 500);
+
 }//end compnent mount
 
 
   render(){
-    console.log(this.state.synced);
+    //console.log(this.state.synced);
     if(this.state.synced['value'] == '0'){
       return(
         <TakeQuiz

@@ -21,7 +21,7 @@ var Base = ({
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <NavLink to="/" style={{ textDecoration: 'none' }}>TRCKBLMP</NavLink>
+        <Link to="/" style={{ textDecoration: 'none' }}>TRCKBLMP</Link>
       </div>
 
       { Auth.isUserAuthenticated() ? (
