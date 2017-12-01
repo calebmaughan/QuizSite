@@ -9,7 +9,7 @@ var QuizSchema = new Schema({
   onQuestion: {type:Number, default: 0},
   //tells us how big the quiz is
   maxSize: {type:Number, default: 0},
-
+  answersClickNumber:[[Number]],
   isPublished: {type:Boolean, default: false},
   isTaken: {type:Boolean, default: false},
   quizAccessID: String

@@ -4,8 +4,8 @@ import QuizList from '../components/QuizList.js';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-
-
+import ResultAuth from '../modules/ResultAuth.js';
+import ResultsPage from '../containers/ResultsPage.js';
 class QuizListPage extends React.Component {
 
   constructor(props) {
@@ -38,6 +38,8 @@ class QuizListPage extends React.Component {
   }
   onView(id){
     console.log('Bout to view ' + id);
+    ResultAuth.setquizID(id);
+  //this.props.history.push('/result');
   }
   onEdit(id) {
 
@@ -56,6 +58,7 @@ class QuizListPage extends React.Component {
         onStart = {this.onStart}
         onEdit = {this.onEdit}
       />
+
     );
   }
 };
