@@ -14,15 +14,21 @@ const QuizList = ({
     <Paper zDepth={2}>
       {quizList.map((quizId,i) => (
         <div  key={i}>
+
         <Link to='/result'>
             <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
             </Link>
+
+
+          <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
 
           <div>
 
             <RaisedButton label={'Start'} hoverColor="#23c2db" backgroundColor="#ccc4c3" Secondary={true}  onClick={onStart.bind(this, quizId)}/>
             <Link to='/edit'>
+
             <RaisedButton label={'Edit'}  Secondary={true}  onClick={onEdit.bind(this, quizId)}/>
+
             </Link>
           </div>
           <Divider/>

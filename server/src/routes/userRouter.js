@@ -46,6 +46,24 @@ router.route('/')
   });
 ////////////////////////////////////////////////////////////////////////////////
 
+router.put('/:user_id/addQuiz', function(req, res) {
+ User.findById(req.params.user_id, function(err, user) {
+   if (err)
+     res.send(err);
+
+     // console.log(req.body.quiz_id);
+   user.quizList.push(req.body.quiz_id);
+   // user.quizList = JSON.stringify(obj);
+
+   user.save(function(err) {
+     if(err)
+       send(err);
+     console.log(">> User " + req.params.user_id + " added a new quiz " + req.quiz_id);
+     res.json({message: ">> User " + req.params.user_id + "was updated"});
+   });
+ });
+})
+
 ////////////////////////////////////////////////////////////////////////////////
 // Performs actions based on user_id
 router.route('/:user_id')
