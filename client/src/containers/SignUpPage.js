@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { withRouter } from 'react-router-dom';
 import SignUpForm from '../components/SignUpForm.js';
+import Auth2 from '../modules/Auth2.js';
 
 
 class SignUpPage extends React.Component {
@@ -70,6 +71,10 @@ class SignUpPage extends React.Component {
   }
 
   render() {
+    if(Auth2.getRunning() == '1'){
+      Auth2.setRunning('0');
+      window.location.reload();
+    }
     return (
       <SignUpForm
         onSubmit={this.processForm}
