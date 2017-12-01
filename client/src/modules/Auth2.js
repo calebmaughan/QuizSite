@@ -20,6 +20,12 @@ class Auth2{
   static getRunning(){
     return localStorage.getItem('running')
   }
+  static getError(){
+    return localStorage.getItem('error')
+  }
+  static setError(x){
+    localStorage.setItem('error', x)
+  }
 
 }
 export default Auth2;

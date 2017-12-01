@@ -6,6 +6,7 @@ import TakeQuiz from '../components/TakeQuiz.js';
 import Auth2 from '../modules/Auth2.js';
 import WaitPage from '../components/WaitPage.js';
 import DonePage from '../components/DonePage.js';
+import WaitStartPage from '../components/WaitStartPage.js';
 
 class TakePage extends React.Component{
 
@@ -58,21 +59,20 @@ class TakePage extends React.Component{
       //console.log(Auth2.getquizID());
       //console.log(xhr.status);
       if (xhr.status === 200) {
+        if(xhr.response.isPublished){
 
         var total = xhr.response.questions.length;
         var currentQuestion = xhr.response.onQuestion;
+        //if current question is greater than total question, done page
         if (quest >= total){
-
-
           sync['value'] = '1';
           this.setState({
             sync
           });
         }
         else{
+          //if current question equals database, question/answer
           if(currentQuestion == quest){
-
-
             sync['value'] = '0';
             qid1['id'] = xhr.response.questions[quest];
             answers['a1'] = xhr.response.answers[quest][0];
@@ -84,25 +84,26 @@ class TakePage extends React.Component{
               sync
             });
           }
+          //not same as database, wait page
           else{
-
-
-
-            sync['value'] = '2';
-
+            sync['value'] = '3';
             this.setState({
               sync
             });
-
           }
         }
-
       }
+      //not started"published", wait for quiz to start page
       else{
-        //console.log("failure");
-
-        this.props.history.push('/');
+        sync['value'] = '2';
+        this.setState({
+          sync
+        });
       }
+    }
+    else{
+      this.props.history.push('/');
+    }
     });
 
     xhr.send();
@@ -132,6 +133,11 @@ class TakePage extends React.Component{
     else if(this.state.synced['value'] == '1'){
       return(
         <DonePage/>
+      )
+    }
+    else if(this.state.synced['value'] == '2'){
+      return(
+        <WaitStartPage/>
       )
     }
     else{

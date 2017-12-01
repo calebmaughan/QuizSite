@@ -11,7 +11,8 @@ class Home extends React.Component{
     super(props);
     this.state = {
       quizID:{
-        id: ''
+        id: '',
+        error:''
       }
     };
 
@@ -32,8 +33,12 @@ class Home extends React.Component{
   submitForm(event){
     const id = this.state.quizID.id;
     Auth2.setquizID(id);
+
     Auth2.setQuizQuestion(0);
     this.props.history.push('/take');
+
+
+
   }
 
   render() {
@@ -41,13 +46,14 @@ class Home extends React.Component{
       Auth2.setRunning('0');
       window.location.reload();
     }
-    return (
-      <HomePage
-        onSubmit={this.submitForm}
-        quizId={this.state.quizID}
-        changeID={this.changeID}
-      />
-    );
+      return (
+        <HomePage
+          onSubmit={this.submitForm}
+          quizId={this.state.quizID}
+          changeID={this.changeID}
+        />
+      );
+
   }
 };
 
