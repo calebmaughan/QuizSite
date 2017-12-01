@@ -4,6 +4,7 @@ import QuizList from '../components/QuizList.js';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import Auth2 from '../modules/Auth2';
 
 
 class QuizListPage extends React.Component {
@@ -44,8 +45,9 @@ class QuizListPage extends React.Component {
     console.log('You gon edit dis here quiz ' + id);
   }
 
-  onStart(event) {
-    console.log('Start la quiz');
+  onStart(id) {
+    console.log('Start la quiz ' + id);
+    Auth2.setquizID(id);
   }
 
   render() {

@@ -13,6 +13,7 @@ import Home from '../containers/Home.js';
 import TakeQuiz from '../components/TakeQuiz.js';
 import TakePage from '../containers/TakePage.js';
 import EditQuizPage from '../containers/EditQuizPage.js';
+import Admin from '../containers/Admin.js';
 
 
 var Base = ({
@@ -42,6 +43,7 @@ var Base = ({
         <Switch>
           <Route exact path="/" component={DashboardPage}/>
           <Route path="/edit" component={EditQuizPage}/>
+          <Route path="/take" component = {Admin}/>
         </Switch>
       ) : (
         <Route exact path="/" component={Home}/>
