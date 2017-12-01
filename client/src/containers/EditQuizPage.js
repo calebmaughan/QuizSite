@@ -179,7 +179,7 @@ class EditQuizPage extends React.Component {
     } else {
       this.setState({
         questions: [],
-        answers: [[]]
+        answers: []
       })
     }
   }
