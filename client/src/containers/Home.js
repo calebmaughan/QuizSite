@@ -7,11 +7,12 @@ import Auth2 from '../modules/Auth2.js';
 
 class Home extends React.Component{
   constructor(props){
-    super(props);
 
+    super(props);
     this.state = {
       quizID:{
-        id: '1234'
+        id: '',
+        error:''
       }
     };
 
@@ -32,18 +33,27 @@ class Home extends React.Component{
   submitForm(event){
     const id = this.state.quizID.id;
     Auth2.setquizID(id);
+
     Auth2.setQuizQuestion(0);
     this.props.history.push('/take');
+
+
+
   }
 
   render() {
-    return (
-      <HomePage
-        onSubmit={this.submitForm}
-        quizId={this.state.quizID}
-        changeID={this.changeID}
-      />
-    );
+    if(Auth2.getRunning() == '1'){
+      Auth2.setRunning('0');
+      window.location.reload();
+    }
+      return (
+        <HomePage
+          onSubmit={this.submitForm}
+          quizId={this.state.quizID}
+          changeID={this.changeID}
+        />
+      );
+
   }
 };
 

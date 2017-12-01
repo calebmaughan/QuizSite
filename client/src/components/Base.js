@@ -10,7 +10,9 @@ import Home from '../containers/Home.js';
 import TakeQuiz from '../components/TakeQuiz.js';
 import TakePage from '../containers/TakePage.js';
 import EditQuizPage from '../containers/EditQuizPage.js';
+import Admin from '../containers/Admin.js';
 import ResultsPage from '../containers/ResultsPage.js';
+
 
 var Base = ({
   onLogout
@@ -18,7 +20,7 @@ var Base = ({
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
-        <NavLink to="/" style={{ textDecoration: 'none' }}>TRCKBLMP</NavLink>
+        <Link to="/" style={{ textDecoration: 'none' }}>TRCKBLMP</Link>
       </div>
 
       { Auth.isUserAuthenticated() ? (
@@ -39,6 +41,7 @@ var Base = ({
         <Switch>
           <Route exact path="/" component={DashboardPage}/>
           <Route path="/edit" component={EditQuizPage}/>
+          <Route path="/take" component = {Admin}/>
           <Route path="/result" component={ResultsPage}/>
         </Switch>
       ) : (
