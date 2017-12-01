@@ -2,9 +2,9 @@ var mongoose    = require('mongoose');
 var Schema = mongoose.Schema;
 var QuizSchema = new Schema({
   //holds an array of questions
-  questions: [String],
+  questions: [],
   //holds an array of answers where indices of an array match a question
-  answers: [[String]],
+  answers: [[]],
   //tells us which question we are on
   onQuestion: {type:Number, default: 0},
   //tells us how big the quiz is
