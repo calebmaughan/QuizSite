@@ -8,7 +8,6 @@ import Auth2 from '../modules/Auth2.js';
 class TakePage extends React.Component{
 
 
-
   constructor(props){
       super(props);
 
@@ -36,7 +35,7 @@ class TakePage extends React.Component{
   }
 
   componentDidMount(){
-    var quest = Auth2.getQuizQuestion();
+   var quest = Auth2.getQuizQuestion();
 
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/quizzes/' + Auth2.getquizID());

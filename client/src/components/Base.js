@@ -1,11 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link, NavLink, Switch, Route } from 'react-router-dom';
-
 import Auth from '../modules/Auth';
-
 import '../static/css/style.css';
-
 import DashboardPage from '../containers/DashboardPage.js';
 import LoginPage from '../containers/LoginPage.js';
 import SignUpPage from '../containers/SignUpPage.js';
@@ -13,7 +10,7 @@ import Home from '../containers/Home.js';
 import TakeQuiz from '../components/TakeQuiz.js';
 import TakePage from '../containers/TakePage.js';
 import EditQuizPage from '../containers/EditQuizPage.js';
-
+import ResultsPage from '../containers/ResultsPage.js';
 
 var Base = ({
   onLogout
@@ -42,6 +39,7 @@ var Base = ({
         <Switch>
           <Route exact path="/" component={DashboardPage}/>
           <Route path="/edit" component={EditQuizPage}/>
+          <Route path="/result" component={ResultsPage}/>
         </Switch>
       ) : (
         <Route exact path="/" component={Home}/>
@@ -50,6 +48,7 @@ var Base = ({
       <Route  path="/signup" component={SignUpPage}/>
       <Route  path="/logout" component={LoginPage}/>
       <Route  path="/take" component={TakePage}/>
+
     </Switch>
 
   </div>
