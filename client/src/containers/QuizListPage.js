@@ -5,7 +5,6 @@ import QuizList from '../components/QuizList.js';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import Auth2 from '../modules/Auth2';
 import ResultAuth from '../modules/ResultAuth.js';
 import ResultsPage from '../containers/ResultsPage.js';
 
