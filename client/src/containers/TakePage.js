@@ -55,8 +55,8 @@ class TakePage extends React.Component{
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', () => {
-      console.log(Auth2.getquizID());
-      console.log(xhr.status);
+      //console.log(Auth2.getquizID());
+      //console.log(xhr.status);
       if (xhr.status === 200) {
 
         var total = xhr.response.questions.length;
@@ -99,7 +99,7 @@ class TakePage extends React.Component{
 
       }
       else{
-        console.log("failure");
+        //console.log("failure");
 
         this.props.history.push('/');
       }
