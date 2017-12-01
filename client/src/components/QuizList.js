@@ -19,9 +19,6 @@ const QuizList = ({
             <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
             </Link>
 
-
-          <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
-
           <div>
 
             <Link to= '/take'><RaisedButton label={'Start'} hoverColor="#23c2db" backgroundColor="#ccc4c3" Secondary={true}  onClick={onStart.bind(this, quizId)}/></Link>
