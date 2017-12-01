@@ -2,9 +2,14 @@ var mongoose  = require('mongoose');
 var config    = require('./config/index')
 
 // The URI we will be connecting to. Change this as needed.
-//var dbURI = 'mongodb://tpollick:apassword@ds117485.mlab.com:17485/live-polling-test';
 
-var dbURI = 'mongodb://cmaughan1582:password@ds125016.mlab.com:25016/practice'
+
+//var dbURI = 'mongodb://cmaughan1582:password@ds125016.mlab.com:25016/practice'
+
+var dbURI = 'mongodb://tpollick:apassword@ds117485.mlab.com:17485/live-polling-test';
+
+//var dbURI = 'mongodb://kbic17:apassword@ds227525.mlab.com:27525/trckblmp';
+
 
 // Create the connection
 mongoose.connect(dbURI);

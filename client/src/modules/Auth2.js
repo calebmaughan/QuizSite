@@ -7,6 +7,10 @@ class Auth2{
     return localStorage.getItem('quizID');
   }
 
+  static removeQuizId() {
+    localStorage.removeItem('quizID');
+  }
+
   static getQuizQuestion(){
     return localStorage.getItem('question');
   }

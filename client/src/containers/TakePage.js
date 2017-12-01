@@ -11,7 +11,6 @@ import WaitStartPage from '../components/WaitStartPage.js';
 class TakePage extends React.Component{
 
 
-
   constructor(props){
       super(props);
 
@@ -43,12 +42,12 @@ class TakePage extends React.Component{
     Auth2.setQuizQuestion(question);
   }
 
+
   testfunc(){
     Auth2.setRunning('1');
     var sync = this.state.synced;
     var qid1 = this.state.quiz;
     var answers = this.state.answers;
-
     var quest = Auth2.getQuizQuestion();
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/quizzes/' + Auth2.getquizID());
