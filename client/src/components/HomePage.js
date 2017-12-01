@@ -17,6 +17,7 @@ const HomePage = ({
         name="id"
         value={quizId.id}
         onChange={changeID}
+        errorText={quizId.error}
         />
     </div>
     <div className='sub'>

@@ -5,8 +5,10 @@ import QuizList from '../components/QuizList.js';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import Auth2 from '../modules/Auth2';
 import ResultAuth from '../modules/ResultAuth.js';
 import ResultsPage from '../containers/ResultsPage.js';
+
 class QuizListPage extends React.Component {
 
   constructor(props) {
@@ -50,8 +52,9 @@ class QuizListPage extends React.Component {
     Auth2.setquizID(id);
   }
 
-  onStart(event) {
-    console.log('Start la quiz');
+  onStart(id) {
+    console.log('Start la quiz ' + id);
+    Auth2.setquizID(id);
   }
 
   render() {

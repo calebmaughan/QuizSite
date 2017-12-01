@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import LoginForm from '../components/LoginForm.js';
 import Auth from '../modules/Auth.js';
+import Auth2 from '../modules/Auth2.js';
 
 
 class LoginPage extends React.Component {
@@ -70,6 +71,10 @@ class LoginPage extends React.Component {
   }
 
   render() {
+    if(Auth2.getRunning() == '1'){
+      Auth2.setRunning('0');
+      window.location.reload();
+    }
     return (
       <LoginForm
         onSubmit={this.processForm}

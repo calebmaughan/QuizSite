@@ -86,9 +86,12 @@ router.route('/:quiz_id')
   //returns the quiz
   .get(function(req, res) {
     Quiz.findById(req.params.quiz_id, function(err, quiz) {
-      if (err)
-        res.send(err)
+      if (err){
+        //console.log("this is a test");
+        res.send(999)
+        }
       res.json(quiz)
+
     });
   })
 //Check
