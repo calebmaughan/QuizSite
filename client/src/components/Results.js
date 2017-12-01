@@ -7,26 +7,18 @@ import FlatButton from 'material-ui/FlatButton';
 import { Card,
   CardTitle,
   CardText} from 'material-ui/Card';
-
-
 const Results = ({
     quizaccessid,
     answers,
     questions,
     answersClickNumber
-
 }) =>(
   <Card className="container">
     <CardTitle title = {"Quiz: "+quizaccessid}/>
     <Divider/>
-
        {questions.map((questions,i) => (
          <div  key={i}>
          <CardTitle title ={questions}/>
-
-
-
-
            <div>
            <RaisedButton label={answers[i][0] } disableTouchRipple={true} >
           {answersClickNumber[i][0]}
@@ -37,7 +29,6 @@ const Results = ({
            {answersClickNumber[i][1]}
            </RaisedButton>
            </div>
-
            <div>
            <RaisedButton label={answers[i][2] } disableTouchRipple={true} >
           {answersClickNumber[i][2]}
@@ -48,10 +39,6 @@ const Results = ({
           {answersClickNumber[i][3]}
            </RaisedButton>
            </div>
-
-
-
-
            <Divider/>
          </div>
        ))}
