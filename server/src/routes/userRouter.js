@@ -108,5 +108,27 @@ router.route('/:user_id')
   });
 ////////////////////////////////////////////////////////////////////////////////
 
+router.route('/:user_id/deleteQuiz/:quiz_id')
+  .delete(function(req, res) {
+    User.findById(req.params.user_id, function(err, user) {
+      if(err)
+        res.send(err);
+
+      quizzes = user.quizList;
+      quizzes.splice(quizzes.indexOf(req.params.quiz_id),1);
+      console.log(quizzes.indexOf(req.params.quiz_id));
+      console.log(quizzes + " <<");
+      // quizzes.splice(quizzes.indexOf(req.params.user_id),1);
+
+      user.save(function(err) {
+        if(err)
+          send(err)
+
+        console.log(">> Quiz " + req.params.quiz_id + " was removed from user " + req.params.user_id);
+      })
+
+    })
+  })
+
 // This must be included or you can't require in server.js
 module.exports = router;

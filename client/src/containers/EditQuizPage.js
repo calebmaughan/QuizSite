@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import BrowserHistory from 'history';
 import Auth from '../modules/Auth.js';
 import Auth2 from '../modules/Auth2.js';
 import { Card, CardText } from 'material-ui/Card';
@@ -156,6 +157,7 @@ class EditQuizPage extends React.Component {
 
     this.addQuestion = this.addQuestion.bind(this);
     this.saveQuiz = this.saveQuiz.bind(this);
+    this.deleteQuiz = this.deleteQuiz.bind(this);
     this.changeQuestion = this.changeQuestion.bind(this);
     this.changeAnswer = this.changeAnswer.bind(this);
   }
@@ -254,6 +256,14 @@ class EditQuizPage extends React.Component {
       }
 }
 
+  deleteQuiz(event) {
+    makeAPIRequest('delete', '/quizzes/'+Auth2.getquizID(), null)
+      .then(function(response) {
+        window.location = '/';
+        makeAPIRequestAuth('delete', '/users/'+Auth.getUserId()+'/deleteQuiz/'+Auth2.getquizID(), null)
+      });
+  }
+
 
   render() {
     return(
@@ -272,9 +282,17 @@ class EditQuizPage extends React.Component {
           label={"Add Question"}
           onClick={this.addQuestion}
         />
+
+      <Link to='/'>
+        <FlatButton
+          label={"Save"}
+          onClick={this.saveQuiz}
+        />
+      </Link>
+
       <FlatButton
-        label={"Save"}
-        onClick={this.saveQuiz}
+        label={"Delete"}
+        onClick={this.deleteQuiz}
       />
       </Card>
     )
