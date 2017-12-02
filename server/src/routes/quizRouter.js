@@ -85,6 +85,35 @@ router.route('/')
       //   res.json({ message: ">> Quiz " + req.params.quiz_id + " was updated"});
       // });
     });
+
+router.route('/:quiz_id/publish')
+
+.put(function(req, res) {
+  Quiz.findById(req.params.quiz_id, function(err, quiz){
+    if(err)
+      res.send(err)
+    quiz.isPublished = JSON.parse(req.body.isPublished);
+    quiz.save(function(err){
+      if(err)
+        res.send(err);
+    });
+  });
+})
+
+router.route('/:quiz_id/next')
+
+.put(function(req, res) {
+  Quiz.findById(req.params.quiz_id, function(err, quiz){
+    if(err)
+      res.send(err)
+    quiz.onQuestion = JSON.parse(req.body.onQuestion);
+    quiz.save(function(err){
+      if(err)
+        res.send(err);
+    });
+  });
+})
+
 router.route('/:quiz_id')
   // Get by quiz_id
   //returns the quiz
@@ -109,6 +138,7 @@ router.route('/:quiz_id')
         console.log(quiz);
         quiz.questions = JSON.parse(req.body.questions);
         quiz.answers = JSON.parse(req.body.answers);
+
         while(quiz.answersClickNumber.length<JSON.parse(req.body.questions).length){
           console.log("put it");
           quiz.answersClickNumber.push([0,0,0,0])
