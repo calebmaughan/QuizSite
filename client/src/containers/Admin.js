@@ -97,7 +97,7 @@ class Admin extends React.Component{
       console.log(xhr1.status);
       if (xhr1.status === 200) {
         var totalQuestion = xhr1.response.questions.length;
-
+        
         var current = Auth2.getQuizQuestion();
         current++;
         if(current >= totalQuestion){
