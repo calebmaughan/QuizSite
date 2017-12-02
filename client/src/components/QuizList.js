@@ -11,22 +11,22 @@ const QuizList = ({
   onEdit,
   onView
 }) => (
-    <Paper zDepth={2}>
+    <Paper zDepth={5}>
       {quizList.map((quizId,i) => (
         <div  key={i}>
 
         <Link to='/result'>
-            <FlatButton label={quizId} primary={true} fullWidth={true} onClick={onView.bind(this, quizId)} />
+            <FlatButton label={quizId} fullWidth={true} onClick={onView.bind(this, quizId)} />
             </Link>
 
           <div>
 
-            <Link to= '/take'><RaisedButton label={'Start'} hoverColor="#23c2db" backgroundColor="#ccc4c3" Secondary={true}  onClick={onStart.bind(this, quizId)}/></Link>
+            <Link to= '/take'><RaisedButton className='ourButtons' label={'Start'} onClick={onStart.bind(this, quizId)} primary/></Link>
             <Link to='/edit'>
-               <RaisedButton label={'Edit'}  Secondary={true}  onClick={onEdit.bind(this, quizId)}/>
+               <RaisedButton label={'Edit'} onClick={onEdit.bind(this, quizId)} secondary/>
             </Link>
           </div>
-          <Divider/>
+          <Divider />
         </div>
       ))}
     </Paper>

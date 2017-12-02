@@ -53,7 +53,20 @@ class QuizListPage extends React.Component {
 
   onStart(id) {
     console.log('Start la quiz ' + id);
+    Auth2.setQuizQuestion(0);
     Auth2.setquizID(id);
+    const published = encodeURIComponent(true);
+    var form = `isPublished=${published}`;
+    const xhr = new XMLHttpRequest();
+    xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/publish');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        console.log("200 status");
+      }
+    });
+    xhr.send(form);
   }
 
   render() {
