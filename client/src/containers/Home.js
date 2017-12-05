@@ -18,8 +18,15 @@ class Home extends React.Component{
 
     this.submitForm = this.submitForm.bind(this);
     this.changeID = this.changeID.bind(this);
+    this.getAccessID = this.getAccessID.bind(this);
 
   }
+
+  getAccessID(){
+
+
+  }
+
   changeID(event) {
     var field = event.target.name;
     var quizId = this.state.quizID;

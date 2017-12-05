@@ -10,7 +10,6 @@ const HomePage = ({
 }) => (
   <Card className='container' style={{borderRadius: '25px'}}>
     <CardTitle title="TRCK BLMP" subtitle="Enter a quiz ID to take a quiz" titleColor = "#E4EEFF" subtitleColor="#E4EEFF"/>
-    <form onSubmit={onSubmit}>
     <div>
       <TextField className='text-center'
         floatingLabelText = "Quiz ID"
@@ -21,9 +20,8 @@ const HomePage = ({
         />
     </div>
     <div className='sub'>
-      <RaisedButton type="submit" label="Submit" primary />
+      <RaisedButton onClick={onSubmit} label="Submit" primary />
     </div>
-    </form>
   </Card>
 );
 
