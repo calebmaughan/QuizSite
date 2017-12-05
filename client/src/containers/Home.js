@@ -18,8 +18,29 @@ class Home extends React.Component{
 
     this.submitForm = this.submitForm.bind(this);
     this.changeID = this.changeID.bind(this);
+    this.getAccessID = this.getAccessID.bind(this);
 
   }
+
+  getAccessID(id){
+      console.log(id);
+      const xhr = new XMLHttpRequest
+      var string = '/quizzes' + id + 'access';
+      xhr.open('get', '/quizzes/' + id + '/access');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if(xhr.status===200){
+          console.log("success");
+          var newID = xhr.response._id;
+          console.log(newID);
+          Auth2.setquizID(newID);
+        }
+      });
+      xhr.send();
+
+  }
+
   changeID(event) {
     var field = event.target.name;
     var quizId = this.state.quizID;
@@ -28,12 +49,19 @@ class Home extends React.Component{
     this.setState({
       quizId
     });
+    console.log(this.state.quizID.id);
   }
 
   submitForm(event){
+    var id1 = Math.floor(Math.random()*(99999 - 11111 + 1)) + 1;
+    console.log(id1);
+    var id2 = id1.toString();
+    console.log(id2);
     const id = this.state.quizID.id;
-    Auth2.setquizID(id);
-
+    console.log(id);
+    Auth2.setquizID("000");
+    this.getAccessID(id);
+    //Auth2.setquizID(id);
     Auth2.setQuizQuestion(0);
     this.props.history.push('/take');
 

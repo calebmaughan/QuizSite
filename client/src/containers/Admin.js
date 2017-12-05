@@ -22,12 +22,34 @@ class Admin extends React.Component{
           buttonlabel:'Finish',
           subtitle:'Press finish to finish the quiz',
           link:'/'
+        },
+        startText:{
+          buttonlabel:'Start',
+          subtitle:'',
+          link:'/take'
         }
       };
 
       this.nextQuestion = this.nextQuestion.bind(this);
       this.finish = this.finish.bind(this);
+      this.startQuiz = this.startQuiz.bind(this);
 
+  }
+
+  startQuiz(event){
+    const published = encodeURIComponent(true);
+    var form = `isPublished=${published}`;
+    const xhr = new XMLHttpRequest();
+    xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/publish');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        console.log("200 status");
+      }
+    });
+    xhr.send(form);
+    window.location.reload();
   }
 
   nextQuestion(event){
@@ -84,6 +106,7 @@ class Admin extends React.Component{
   }
 
   componentDidMount(){
+
     console.log("test");
     const xhr1 = new XMLHttpRequest();
     console.log(xhr1.status);
@@ -97,12 +120,32 @@ class Admin extends React.Component{
       console.log(xhr1.status);
       if (xhr1.status === 200) {
         var totalQuestion = xhr1.response.questions.length;
-        
+        var published = xhr1.response.isPublished;
+        console.log(published);
+        if(!published){
+          var accessID=xhr1.response.quizAccessID;
+          var change3 = this.state.startText;
+          var change2 = this.state.text;
+          change2['synced']='1';
+          this.setState({
+            change2
+          });
+          change3['subtitle']='Quiz ID: ' + accessID;
+          this.setState({
+            change3
+          });
+          if(Auth2.getOneReload()=='0'){
+            Auth2.setOneReload('1');
+            window.location.reload();
+          }
+        }
+        else{
+        Auth2.setOneReload('0');
         var current = Auth2.getQuizQuestion();
         current++;
         if(current >= totalQuestion){
           var change = this.state.text;
-          change['synced']='1'
+          change['synced']='2'
           this.setState({
             change
           });
@@ -114,8 +157,8 @@ class Admin extends React.Component{
             change1
           });
         }
-
       }
+      }//end 200 status
     });
     xhr1.send();
   }
@@ -130,7 +173,14 @@ class Admin extends React.Component{
         />
       );
     }
-
+    else if(this.state.text['synced']==='1'){
+      return(
+        <AdminPage
+        text = {this.state.startText}
+        x = {this.startQuiz}
+        />
+      );
+    }
     else{
       return(
         <AdminPage

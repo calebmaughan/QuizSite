@@ -100,6 +100,22 @@ router.route('/:quiz_id/publish')
   });
 })
 
+router.route('/:access_id/access')
+
+.get(function(req,res){
+  Quiz.findOne({"quizAccessID": req.params.access_id}, function(err, quiz) {
+    if (err){
+      res.status(500).send(998);
+    }
+    if(quiz){
+      res.json(quiz);
+    }
+    else{
+      res.status(404).send(999);
+    }
+  });
+})
+
 router.route('/:quiz_id/next')
 
 .put(function(req, res) {
@@ -107,6 +123,20 @@ router.route('/:quiz_id/next')
     if(err)
       res.send(err)
     quiz.onQuestion = JSON.parse(req.body.onQuestion);
+    quiz.save(function(err){
+      if(err)
+        res.send(err);
+    });
+  });
+})
+
+router.route('/:quiz_id/newAccess')
+
+.put(function(req, res) {
+  Quiz.findById(req.params.quiz_id, function(err, quiz){
+    if(err)
+      res.send(err)
+    quiz.quizAccessID = JSON.parse(req.body.quizAccessID);
     quiz.save(function(err){
       if(err)
         res.send(err);

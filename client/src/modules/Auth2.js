@@ -30,6 +30,12 @@ class Auth2{
   static setError(x){
     localStorage.setItem('error', x)
   }
+  static getOneReload(){
+    return localStorage.getItem('reload');
+  }
+  static setOneReload(x){
+    localStorage.setItem('reload', x);
+  }
 
 }
 export default Auth2;
