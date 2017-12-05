@@ -130,6 +130,20 @@ router.route('/:quiz_id/next')
   });
 })
 
+router.route('/:quiz_id/newAccess')
+
+.put(function(req, res) {
+  Quiz.findById(req.params.quiz_id, function(err, quiz){
+    if(err)
+      res.send(err)
+    quiz.quizAccessID = JSON.parse(req.body.quizAccessID);
+    quiz.save(function(err){
+      if(err)
+        res.send(err);
+    });
+  });
+})
+
 router.route('/:quiz_id')
   // Get by quiz_id
   //returns the quiz

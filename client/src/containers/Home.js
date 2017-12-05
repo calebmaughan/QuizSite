@@ -53,6 +53,10 @@ class Home extends React.Component{
   }
 
   submitForm(event){
+    var id1 = Math.floor(Math.random()*(99999 - 11111 + 1)) + 1;
+    console.log(id1);
+    var id2 = id1.toString();
+    console.log(id2);
     const id = this.state.quizID.id;
     console.log(id);
     Auth2.setquizID("000");

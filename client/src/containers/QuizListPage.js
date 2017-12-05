@@ -52,24 +52,40 @@ class QuizListPage extends React.Component {
   }
 
   onStart(id) {
-    console.log('Start la quiz ' + id);
+    var id1 = Math.floor(Math.random()*(99999 - 11111 + 1)) + 1;
+    var id2 = id1.toString();
+    //console.log('Start la quiz ' + id);
     Auth2.setQuizQuestion(0);
     Auth2.setquizID(id);
-    const published = encodeURIComponent(true);
-    var form = `isPublished=${published}`;
-    const xhr = new XMLHttpRequest();
-    xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/publish');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
+    const changeAccess = encodeURIComponent(id2);
+    // const published = encodeURIComponent(true);
+    // var form = `isPublished=${published}`;
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/publish');
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    // xhr.responseType = 'json';
+    // xhr.addEventListener('load', () => {
+    //   if (xhr.status === 200) {
+    //     console.log("200 status");
+    //   }
+    // });
+    // xhr.send(form);
+    //change access id
+    var form1 = `quizAccessID=${changeAccess}`;
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open('put', '/quizzes/' + Auth2.getquizID() + '/newAccess');
+    xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr1.responseType = 'json';
+    xhr1.addEventListener('load', () => {
+      if (xhr1.status === 200) {
         console.log("200 status");
       }
     });
-    xhr.send(form);
+    xhr1.send(form1);
   }
 
   render() {
+    Auth2.setOneReload('0');
     return (
       <QuizList
         quizList = {this.state.quizList}
