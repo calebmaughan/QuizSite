@@ -100,6 +100,22 @@ router.route('/:quiz_id/publish')
   });
 })
 
+router.route('/:access_id/access')
+
+.get(function(req,res){
+  Quiz.findOne({"quizAccessID": req.params.access_id}, function(err, quiz) {
+    if (err){
+      res.status(500).send(998);
+    }
+    if(quiz){
+      res.json(quiz);
+    }
+    else{
+      res.status(404).send(999);
+    }
+  });
+})
+
 router.route('/:quiz_id/next')
 
 .put(function(req, res) {

@@ -22,8 +22,22 @@ class Home extends React.Component{
 
   }
 
-  getAccessID(){
-
+  getAccessID(id){
+      console.log(id);
+      const xhr = new XMLHttpRequest
+      var string = '/quizzes' + id + 'access';
+      xhr.open('get', '/quizzes/' + id + '/access');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if(xhr.status===200){
+          console.log("success");
+          var newID = xhr.response._id;
+          console.log(newID);
+          Auth2.setquizID(newID);
+        }
+      });
+      xhr.send();
 
   }
 
@@ -35,12 +49,15 @@ class Home extends React.Component{
     this.setState({
       quizId
     });
+    console.log(this.state.quizID.id);
   }
 
   submitForm(event){
     const id = this.state.quizID.id;
-    Auth2.setquizID(id);
-
+    console.log(id);
+    Auth2.setquizID("000");
+    this.getAccessID(id);
+    //Auth2.setquizID(id);
     Auth2.setQuizQuestion(0);
     this.props.history.push('/take');
 
