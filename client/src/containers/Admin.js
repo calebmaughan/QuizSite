@@ -21,9 +21,9 @@ class Admin extends React.Component{
         },
         finishText:{
           buttonlabel:'Finish',
-          subtitle:'Press finish to finish the quiz',
+          subtitle:'Final Question',
           link:'/',
-          title:''
+          title:'Press finish to end'
         },
         startText:{
           buttonlabel:'Start',
@@ -146,7 +146,7 @@ class Admin extends React.Component{
         //Auth2.setOneReload('0');
         var current = Auth2.getQuizQuestion();
         current++;
-        if(current > totalQuestion){
+        if(current >= totalQuestion){
           var change = this.state.text;
           change['synced']='2'
           this.setState({
