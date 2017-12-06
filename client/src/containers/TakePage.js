@@ -248,6 +248,9 @@ class TakePage extends React.Component{
             });
           }
           //not same as database, wait page
+          else if(currentQuestion > quest){
+            Auth2.setQuizQuestion(currentQuestion);
+          }
           else{
             sync['value'] = '3';
             this.setState({
