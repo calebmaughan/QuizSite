@@ -11,22 +11,25 @@ class Admin extends React.Component{
     super(props);
       this.state = {
         text:{
-          synced:'0'
+          synced:'0',
         },
         nextText:{
           buttonlabel:'Next',
           subtitle:'Press next to go to the next question',
-          link:'/take'
+          link:'/take',
+          title:''
         },
         finishText:{
           buttonlabel:'Finish',
           subtitle:'Press finish to finish the quiz',
-          link:'/'
+          link:'/',
+          title:''
         },
         startText:{
           buttonlabel:'Start',
           subtitle:'',
-          link:'/take'
+          link:'/take',
+          title:''
         }
       };
 
@@ -143,12 +146,13 @@ class Admin extends React.Component{
         //Auth2.setOneReload('0');
         var current = Auth2.getQuizQuestion();
         current++;
-        if(current >= totalQuestion){
+        if(current > totalQuestion){
           var change = this.state.text;
           change['synced']='2'
           this.setState({
             change
           });
+          Auth2.setOneReload('0');
         }
         else{
           var change1 = this.state.text;
@@ -156,11 +160,14 @@ class Admin extends React.Component{
           this.setState({
             change1
           });
+          change1 = this.state.nextText;
+          change1['title'] = "Question " + current;
+          this.setState({change1});
           if(Auth2.getOneReload()=='0'){
             Auth2.setOneReload('1');
             window.location.reload();
           }
-          Auth2.setOneReload('0');
+
         }
       }
       }//end 200 status
