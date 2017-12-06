@@ -289,6 +289,7 @@ class EditQuizPage extends React.Component {
 
 
   render() {
+    Auth2.setOneReload('0');
     return(
       <div>
         { this.state.isLoading ? (
@@ -324,6 +325,7 @@ class EditQuizPage extends React.Component {
               label={"Add Question"}
               onClick={this.addQuestion}
             />
+<<<<<<< HEAD
 
           <Link to='/'>
             <FlatButton
@@ -339,6 +341,29 @@ class EditQuizPage extends React.Component {
           </Card>
         )}
       </div>
+=======
+          </div>
+        ))}
+        <FlatButton
+          label={"Add Question"}
+          onClick={this.addQuestion}
+        />
+
+      <Link to='/'>
+        <FlatButton
+          label={"Save"}
+          onClick={this.saveQuiz}
+        />
+      </Link>
+
+      <FlatButton
+        label={"Delete"}
+        onClick={this.deleteQuiz}
+      />
+      <div><Link to='/take'>Take Quiz</Link></div>
+      </Card>
+
+>>>>>>> 002ae5cf2954feaa3f6ec5c63759794bfbacadd4
     )
   }
 }
