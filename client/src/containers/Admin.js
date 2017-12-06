@@ -49,7 +49,7 @@ class Admin extends React.Component{
       }
     });
     xhr.send(form);
-    window.location.reload();
+    setTimeout(window.location.reload(), 1000);
   }
 
   nextQuestion(event){
@@ -72,7 +72,7 @@ class Admin extends React.Component{
       }
     });
     xhr.send(form);
-    window.location.reload();
+    setTimeout(window.location.reload(), 1000);
   }
 
   finish(event){
