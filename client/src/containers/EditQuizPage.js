@@ -233,7 +233,7 @@ class EditQuizPage extends React.Component {
     });
   }
 
-  saveQuiz(event) {
+  saveQuiz(event, path) {
     event.preventDefault();
 
     this.setState({
@@ -271,7 +271,7 @@ class EditQuizPage extends React.Component {
         });
       }
 
-      window.location = '/';
+      window.location = path;
 }
 
   deleteQuiz(event) {
@@ -320,50 +320,30 @@ class EditQuizPage extends React.Component {
               </div>
             ))}
 
+              <FlatButton
+                label={"Add Question"}
+                onClick={this.addQuestion}
+              />
 
-            <FlatButton
-              label={"Add Question"}
-              onClick={this.addQuestion}
-            />
-<<<<<<< HEAD
+              <FlatButton
+                label={"Save"}
+                onClick={(event) => this.saveQuiz(event, '/')}
+              />
 
-          <Link to='/'>
-            <FlatButton
-              label={"Save"}
-              onClick={this.saveQuiz}
-            />
-          </Link>
+              <FlatButton
+                label={"Delete"}
+                onClick={this.deleteQuiz}
+              />
 
-          <FlatButton
-            label={"Delete"}
-            onClick={this.deleteQuiz}
-          />
+              <FlatButton
+                label={"Take Quiz"}
+                onClick={(event) => this.saveQuiz(event, '/take')}
+              />
+
           </Card>
-        )}
-      </div>
-=======
-          </div>
-        ))}
-        <FlatButton
-          label={"Add Question"}
-          onClick={this.addQuestion}
-        />
-
-      <Link to='/'>
-        <FlatButton
-          label={"Save"}
-          onClick={this.saveQuiz}
-        />
-      </Link>
-
-      <FlatButton
-        label={"Delete"}
-        onClick={this.deleteQuiz}
-      />
-      <div><Link to='/take'>Take Quiz</Link></div>
-      </Card>
-
->>>>>>> 002ae5cf2954feaa3f6ec5c63759794bfbacadd4
+        )
+      }
+    </div>
     )
   }
 }
