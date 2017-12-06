@@ -16,6 +16,12 @@ const AdminPage = ({
     <RaisedButton onClick={x} label ={text.buttonlabel} primary/>
     </Link>
     </div>
+    <div>
+    <br></br>
+    <Link to='/edit'>
+    Edit Quiz
+    </Link>
+    </div>
     </Card>
 )
 
