@@ -71,6 +71,34 @@ class QuizListPage extends React.Component {
     // });
     // xhr.send(form);
     //change access id
+    const nextQuest = encodeURIComponent(0);
+    const published = encodeURIComponent(false);
+    var form = `onQuestion=${nextQuest}`;
+    var form2 = `isPublished=${published}`;
+    const xhr = new XMLHttpRequest();
+    xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/next');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+
+      if (xhr.status === 200) {
+        console.log("200 status");
+      }
+    });
+    xhr.send(form);
+
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open('put', '/quizzes/' + Auth2.getquizID() + '/publish');
+    xhr2.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr2.responseType = 'json';
+    xhr2.addEventListener('load', () => {
+
+      if (xhr2.status === 200) {
+        console.log("200 status");
+      }
+    });
+    xhr2.send(form2);
+
     var form1 = `quizAccessID=${changeAccess}`;
     const xhr1 = new XMLHttpRequest();
     xhr1.open('put', '/quizzes/' + Auth2.getquizID() + '/newAccess');

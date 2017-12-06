@@ -140,7 +140,7 @@ class Admin extends React.Component{
           }
         }
         else{
-        Auth2.setOneReload('0');
+        //Auth2.setOneReload('0');
         var current = Auth2.getQuizQuestion();
         current++;
         if(current >= totalQuestion){
@@ -156,6 +156,11 @@ class Admin extends React.Component{
           this.setState({
             change1
           });
+          if(Auth2.getOneReload()=='0'){
+            Auth2.setOneReload('1');
+            window.location.reload();
+          }
+          Auth2.setOneReload('0');
         }
       }
       }//end 200 status
