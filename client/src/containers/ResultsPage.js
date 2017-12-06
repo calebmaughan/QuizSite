@@ -39,7 +39,7 @@ class ResultsPage extends React.Component{
 
 
         this.setState({
-          quizAccessID:xhr.response.quizAccessID,
+          quizAccessID:ResultAuth.getquizID(),
           answers:xhr.response.answers,
           questions:xhr.response.questions,
           answersClickNumber:xhr.response.answersClickNumber
