@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 var router = express.Router();
 // This runs at all '/quiz' calls
 router.use(function(req, res, next) {
-  console.log(">> You be doin' stuff to the quizzes");
+  //console.log(">> You be doin' stuff to the quizzes");
   next();
 });
 //validates that the form has a question and 4 answers to the question
@@ -140,6 +140,30 @@ router.route('/:quiz_id/newAccess')
     quiz.save(function(err){
       if(err)
         res.send(err);
+    });
+  });
+})
+
+router.route('/:quiz_id/incrementAnswer')
+
+.put(function(req, res) {
+  Quiz.findById(req.params.quiz_id, function(err, quiz){
+    if(err)
+      res.send(err)
+    //var newAnswer = JSON.parse(req.body.clicks);
+    console.log(quiz.answersClickNumber[JSON.parse(req.body.firstIndex)][JSON.parse(req.body.secondIndex)]);
+    //console.log(req.body.clicks);
+    //quiz.answersClickNumber[JSON.parse(req.body.firstIndex)][JSON.parse(req.body.secondIndex)] = JSON.parse(req.body.clicks);
+    quiz.answersClickNumber.set(JSON.parse(req.body.secondIndex), JSON.parse(req.body.clicks));
+    console.log(quiz.answersClickNumber[JSON.parse(req.body.firstIndex)][JSON.parse(req.body.secondIndex)]);
+    quiz.save(function(err){
+      if(err){
+        console.log("error message!!!");
+        res.send(err);
+      }
+      else{
+        console.log('success?');
+      }
     });
   });
 })

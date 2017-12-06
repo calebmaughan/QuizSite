@@ -29,19 +29,183 @@ class TakePage extends React.Component{
         }
 
       };
-      this.nextQuestion = this.nextQuestion.bind(this);
+      this.nextQuestion1 = this.nextQuestion1.bind(this);
+      this.nextQuestion2 = this.nextQuestion2.bind(this);
+      this.nextQuestion3 = this.nextQuestion3.bind(this);
+      this.nextQuestion4 = this.nextQuestion4.bind(this);
       this.testfunc = this.testfunc.bind(this);
       //this.state = this.state.bind(this);
 
 
   }
 
-  nextQuestion(event){
+  nextQuestion1(event){
     var question = Auth2.getQuizQuestion();
+    var question2 = question;
+    var number
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open('get', '/quizzes/' + Auth2.getquizID());
+    xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr1.responseType = 'json';
+    xhr1.addEventListener('load', () => {
+      if (xhr1.status === 200) {
+        number = xhr1.response.answersClickNumber[question2];
+        var number1 = number[0];
+        number1++;
+        console.log(number);
+        number[0]=number1;
+      }
+    });
+    xhr1.send();
+
+    function help(){
+      console.log(number);
+      const first = encodeURIComponent(0);
+      const second = encodeURIComponent(question2);
+      const clicked = encodeURIComponent(JSON.stringify(number));
+      //console.log(JSON.parse(clicked));
+      var form = `firstIndex=${first}&secondIndex=${second}&clicks=${clicked}`;
+      const xhr = new XMLHttpRequest();
+      xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/incrementAnswer');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          console.log("200 status");
+        }
+      });
+      xhr.send(form);
+    }
+    setTimeout(help, 1000);
+      question++;
+      Auth2.setQuizQuestion(question);
+  }
+
+  nextQuestion2(event){
+    var question = Auth2.getQuizQuestion();
+    var question2 = question;
+    var number
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open('get', '/quizzes/' + Auth2.getquizID());
+    xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr1.responseType = 'json';
+    xhr1.addEventListener('load', () => {
+      if (xhr1.status === 200) {
+        number = xhr1.response.answersClickNumber[question2];
+        var number1 = number[1];
+        number1++;
+        console.log(number);
+        number[1]=number1;
+      }
+    });
+    xhr1.send();
+
+    function help(){
+      console.log(number);
+      const first = encodeURIComponent(0);
+      const second = encodeURIComponent(question2);
+      const clicked = encodeURIComponent(JSON.stringify(number));
+      //console.log(JSON.parse(clicked));
+      var form = `firstIndex=${first}&secondIndex=${second}&clicks=${clicked}`;
+      const xhr = new XMLHttpRequest();
+      xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/incrementAnswer');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          console.log("200 status");
+        }
+      });
+      xhr.send(form);
+    }
+    setTimeout(help, 1000);
     question++;
     Auth2.setQuizQuestion(question);
   }
 
+  nextQuestion3(event){
+    var question = Auth2.getQuizQuestion();
+    var question2 = question;
+    var number
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open('get', '/quizzes/' + Auth2.getquizID());
+    xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr1.responseType = 'json';
+    xhr1.addEventListener('load', () => {
+      if (xhr1.status === 200) {
+        number = xhr1.response.answersClickNumber[question2];
+        var number1 = number[2];
+        number1++;
+        console.log(number);
+        number[2]=number1;
+      }
+    });
+    xhr1.send();
+
+    function help(){
+      console.log(number);
+      const first = encodeURIComponent(0);
+      const second = encodeURIComponent(question2);
+      const clicked = encodeURIComponent(JSON.stringify(number));
+      //console.log(JSON.parse(clicked));
+      var form = `firstIndex=${first}&secondIndex=${second}&clicks=${clicked}`;
+      const xhr = new XMLHttpRequest();
+      xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/incrementAnswer');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          console.log("200 status");
+        }
+      });
+      xhr.send(form);
+    }
+    setTimeout(help, 1000);
+    question++;
+    Auth2.setQuizQuestion(question);
+  }
+
+  nextQuestion4(event){
+    var question = Auth2.getQuizQuestion();
+    var question2 = question;
+    var number
+    const xhr1 = new XMLHttpRequest();
+    xhr1.open('get', '/quizzes/' + Auth2.getquizID());
+    xhr1.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr1.responseType = 'json';
+    xhr1.addEventListener('load', () => {
+      if (xhr1.status === 200) {
+        number = xhr1.response.answersClickNumber[question2];
+        var number1 = number[3];
+        number1++;
+        console.log(number);
+        number[3]=number1;
+      }
+    });
+    xhr1.send();
+
+    function help(){
+      console.log(number);
+      const first = encodeURIComponent(0);
+      const second = encodeURIComponent(question2);
+      const clicked = encodeURIComponent(JSON.stringify(number));
+      //console.log(JSON.parse(clicked));
+      var form = `firstIndex=${first}&secondIndex=${second}&clicks=${clicked}`;
+      const xhr = new XMLHttpRequest();
+      xhr.open('put', '/quizzes/' + Auth2.getquizID() + '/incrementAnswer');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.responseType = 'json';
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          console.log("200 status");
+        }
+      });
+      xhr.send(form);
+    }
+    setTimeout(help, 1000);
+    question++;
+    Auth2.setQuizQuestion(question);
+  }
 
   testfunc(){
     Auth2.setRunning('1');
@@ -125,7 +289,10 @@ class TakePage extends React.Component{
         <TakeQuiz
           quiz={this.state.quiz}
           answers={this.state.answers}
-          next = {this.nextQuestion}
+          next1 = {this.nextQuestion1}
+          next2 = {this.nextQuestion2}
+          next3 = {this.nextQuestion3}
+          next4 = {this.nextQuestion4}
         />
       );
     }
