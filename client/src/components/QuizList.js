@@ -4,32 +4,58 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import { Card, CardText } from 'material-ui/Card';
+import CircularProgress from 'material-ui/CircularProgress';
 
 const QuizList = ({
   quizList,
+  isLoading,
   onStart,
   onEdit,
   onView
 }) => (
-    <Paper zDepth={5}>
-      {quizList.map((quizId,i) => (
-        <div  key={i}>
+    <div>
+      { isLoading ? (
+        <Card className="container" style={{borderRadius: '25px'}}>
+          <CircularProgress/>
+        </Card>
+      ) : (
+        <Paper zDepth={5}>
+          {quizList.map((quiz,i) => (
+            <div  key={i}>
 
-        <Link to='/result'>
-            <FlatButton label={quizId} fullWidth={true} onClick={onView.bind(this, quizId)} />
-            </Link>
+            <Link to='/result'>
+                <FlatButton
+                  label={quiz.title}
+                  fullWidth={true}
+                  onClick={onView.bind(this, quiz.quizId)}
+                />
+              </Link>
 
-          <div>
+              <div>
+                <Link to= '/take'>
+                  <RaisedButton
+                    className='ourButtons' label={'Start'}
+                    onClick={onStart.bind(this, quiz.quizId)}
+                    primary
+                  />
+                </Link>
 
-            <Link to= '/take'><RaisedButton className='ourButtons' label={'Start'} onClick={onStart.bind(this, quizId)} primary/></Link>
-            <Link to='/edit'>
-               <RaisedButton label={'Edit'} onClick={onEdit.bind(this, quizId)} secondary/>
-            </Link>
-          </div>
-          <Divider />
-        </div>
-      ))}
-    </Paper>
+                <Link to='/edit'>
+                   <RaisedButton
+                     label={'Edit'}
+                     onClick={onEdit.bind(this, quiz.quizId)}
+                     secondary
+                    />
+                </Link>
+              </div>
+
+              <Divider />
+            </div>
+          ))}
+        </Paper>
+      )}
+    </div>
 )
 
 export default QuizList;

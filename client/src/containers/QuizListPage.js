@@ -14,7 +14,8 @@ class QuizListPage extends React.Component {
     super(props);
 
     this.state = {
-      quizList: []
+      quizList: [],
+      isLoading: true
     };
 
     Auth2.removeQuizId();
@@ -35,7 +36,8 @@ class QuizListPage extends React.Component {
       if (xhr.status === 200) {
         console.log(xhr.response.quizList);
         this.setState({
-          quizList: xhr.response.quizList
+          quizList: xhr.response.quizList,
+          isLoading: false
         });
       }
     });
@@ -114,14 +116,15 @@ class QuizListPage extends React.Component {
 
   render() {
     Auth2.setOneReload('0');
+    console.log("quizList: " + this.state.quizList);
     return (
       <QuizList
         quizList = {this.state.quizList}
+        isLoading = {this.state.isLoading}
         onView={this.onView}
         onStart = {this.onStart}
         onEdit = {this.onEdit}
       />
-
     );
   }
 };

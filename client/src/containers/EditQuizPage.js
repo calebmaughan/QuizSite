@@ -7,6 +7,7 @@ import Auth2 from '../modules/Auth2.js';
 import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class QuestionEdit extends React.Component {
     render() {
@@ -152,12 +153,14 @@ class EditQuizPage extends React.Component {
 
     this.state = {
       questions: [],
-      answers: [[]]
+      answers: [[]],
+      isLoading: true
     }
 
     this.addQuestion = this.addQuestion.bind(this);
     this.saveQuiz = this.saveQuiz.bind(this);
     this.deleteQuiz = this.deleteQuiz.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
     this.changeQuestion = this.changeQuestion.bind(this);
     this.changeAnswer = this.changeAnswer.bind(this);
   }
@@ -174,16 +177,26 @@ class EditQuizPage extends React.Component {
         console.log(xhr.response);
         this.setState({
           questions : xhr.response.questions,
-          answers : xhr.response.answers
+          answers : xhr.response.answers,
+          title: xhr.response.title,
+          isLoading : false
         })
       });
       xhr.send();
     } else {
       this.setState({
         questions: [],
-        answers: []
+        answers: [],
+        title: '',
+        isLoading: false
       })
     }
+  }
+
+  changeTitle(event) {
+    this.setState({
+      title: event.target.value
+    })
   }
 
   changeQuestion(event) {
@@ -223,18 +236,21 @@ class EditQuizPage extends React.Component {
   saveQuiz(event) {
     event.preventDefault();
 
-    console.log(this.state.questions);
+    this.setState({
+      isLoading: true
+    })
 
     const questions = encodeURIComponent(JSON.stringify(this.state.questions));
     const answers = encodeURIComponent(JSON.stringify(this.state.answers));
-    var form = `questions=${questions}&answers=${answers}`;
+    const title = encodeURIComponent(this.state.title);
+    var form = `questions=${questions}&answers=${answers}&title=${title}`;
 
     if (Auth2.getquizID() == null) {
       makeAPIRequest('post', '/quizzes', form).then(function(quizResponse) {
         if (quizResponse.status === 200) {
           let quiz_id = quizResponse.response.quiz_id
           quiz_id = encodeURIComponent(quiz_id);
-          form = `quiz_id=${quiz_id}`;
+          form = `quiz_id=${quiz_id}&title=${title}`;
           makeAPIRequestAuth('put', '/users/'+Auth.getUserId()+'/addQuiz', form)
             .then(function(userResponse) {
               console.log(userResponse);
@@ -246,7 +262,7 @@ class EditQuizPage extends React.Component {
         if (quizResponse.status === 200) {
           let quiz_id = quizResponse.response.quiz_id
           quiz_id = encodeURIComponent(quiz_id);
-          form = `quiz_id=${quiz_id}`;
+          form = `quiz_id=${quiz_id}&title=${title}`;
           makeAPIRequestAuth('put', '/users/'+Auth.getUserId()+'/addQuiz', form)
             .then(function(userResponse) {
               console.log(userResponse);
@@ -254,9 +270,16 @@ class EditQuizPage extends React.Component {
           }
         });
       }
+
+      window.location = '/';
 }
 
   deleteQuiz(event) {
+
+    this.setState({
+      isLoading: true
+    })
+
     makeAPIRequest('delete', '/quizzes/'+Auth2.getquizID(), null)
       .then(function(response) {
         window.location = '/';
@@ -267,34 +290,55 @@ class EditQuizPage extends React.Component {
 
   render() {
     return(
-      <Card className="container" style={{borderRadius: '25px'}}>
-        {this.state.questions.map((question,i) => (
-          <div key={i}>
-            <QuestionCard
-              question={question}
-              answers={this.state.answers[i]}
-              changeQuestion={this.changeQuestion}
-              changeAnswer={this.changeAnswer}
+      <div>
+        { this.state.isLoading ? (
+          <Card className="container" style={{borderRadius: '25px'}}>
+            <CircularProgress/>
+          </Card>
+        ) : (
+          <Card className="container" style={{borderRadius: '25px'}}>
+
+              <div className="field-line">
+                <TextField
+                  floatingLabelText="Title"
+                  name={this.state.title}
+                  errorStyle={{color: '#A10559'}}
+                  onChange={this.changeTitle}
+                  value={this.state.title}
+                />
+            </div>
+
+            {this.state.questions.map((question,i) => (
+              <div key={i}>
+                <QuestionCard
+                  question={question}
+                  answers={this.state.answers[i]}
+                  changeQuestion={this.changeQuestion}
+                  changeAnswer={this.changeAnswer}
+                />
+              </div>
+            ))}
+
+
+            <FlatButton
+              label={"Add Question"}
+              onClick={this.addQuestion}
             />
-          </div>
-        ))}
-        <FlatButton
-          label={"Add Question"}
-          onClick={this.addQuestion}
-        />
 
-      <Link to='/'>
-        <FlatButton
-          label={"Save"}
-          onClick={this.saveQuiz}
-        />
-      </Link>
+          <Link to='/'>
+            <FlatButton
+              label={"Save"}
+              onClick={this.saveQuiz}
+            />
+          </Link>
 
-      <FlatButton
-        label={"Delete"}
-        onClick={this.deleteQuiz}
-      />
-      </Card>
+          <FlatButton
+            label={"Delete"}
+            onClick={this.deleteQuiz}
+          />
+          </Card>
+        )}
+      </div>
     )
   }
 }

@@ -55,14 +55,11 @@ router.route('/')
 // makes an empty quiz with default values
 //returns the quiz id.
   .post(function(req, res) {
-
-    console.log(req.body.questions);
-    console.log(req.body.answers);
-
       var quiz = new Quiz();
 
       quiz.questions = JSON.parse(req.body.questions);
       quiz.answers = JSON.parse(req.body.answers);
+      quiz.title = req.body.title;
       console.log("this is what you want: "+JSON.parse(req.body.questions).length);
       for(var i=0;i<JSON.parse(req.body.questions).length;i++){
         console.log("postin hard");
@@ -198,6 +195,7 @@ router.route('/:quiz_id')
         console.log(quiz);
         quiz.questions = JSON.parse(req.body.questions);
         quiz.answers = JSON.parse(req.body.answers);
+        quiz.title = req.body.title;
 
         while(quiz.answersClickNumber.length<JSON.parse(req.body.questions).length){
           console.log("put it");

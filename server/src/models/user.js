@@ -9,10 +9,14 @@ var UserSchema = new Schema({
   },
   password: String,
   name:     String,
-  quizList: [String]
+  // quizList: [String]
+  quizList: [{
+    quizId: String,
+    title: String
+  }]
 });
 
-// Compare the passed password with the value in the database. A model method.
+// Compare the passed password swith the value in the database. A model method.
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
   bcrypt.compare(password, this.password, callback);
 }

@@ -5,6 +5,7 @@ var QuizSchema = new Schema({
   questions: [],
   //holds an array of answers where indices of an array match a question
   answers: [[]],
+  title: String,
   //tells us which question we are on
   onQuestion: {type:Number, default: 0},
   //tells us how big the quiz is

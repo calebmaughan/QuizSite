@@ -51,10 +51,14 @@ router.put('/:user_id/addQuiz', function(req, res) {
    if (err)
      res.send(err);
 
-     // console.log(req.body.quiz_id);
-   user.quizList.push(req.body.quiz_id);
-   // user.quizList = JSON.stringify(obj);
-
+   // user.quizList.push(req.body.quiz_id);
+   user.quizList.push({
+     quizId: req.body.quiz_id,
+     title: req.body.title
+   })
+   console.log("--------> " + req.body.title);
+   console.log("--------> " + req.body.quiz_id);
+   
    user.save(function(err) {
      if(err)
        send(err);
