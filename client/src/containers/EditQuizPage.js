@@ -266,6 +266,7 @@ class EditQuizPage extends React.Component {
 
 
   render() {
+    Auth2.setOneReload('0');
     return(
       <Card className="container" style={{borderRadius: '25px'}}>
         {this.state.questions.map((question,i) => (
@@ -294,7 +295,9 @@ class EditQuizPage extends React.Component {
         label={"Delete"}
         onClick={this.deleteQuiz}
       />
+      <div><Link to='/take'>Take Quiz</Link></div>
       </Card>
+
     )
   }
 }

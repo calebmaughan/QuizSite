@@ -123,6 +123,7 @@ class Admin extends React.Component{
       console.log(xhr1.status);
       if (xhr1.status === 200) {
         var totalQuestion = xhr1.response.questions.length;
+        console.log(totalQuestion);
         var published = xhr1.response.isPublished;
         console.log(published);
         if(!published){
