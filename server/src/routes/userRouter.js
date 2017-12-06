@@ -58,7 +58,7 @@ router.put('/:user_id/addQuiz', function(req, res) {
    })
    console.log("--------> " + req.body.title);
    console.log("--------> " + req.body.quiz_id);
-   
+
    user.save(function(err) {
      if(err)
        send(err);
