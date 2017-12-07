@@ -8,6 +8,8 @@ import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 class QuestionEdit extends React.Component {
     render() {
@@ -320,24 +322,32 @@ class EditQuizPage extends React.Component {
               </div>
             ))}
 
-              <FlatButton
+              <RaisedButton
                 label={"Add Question"}
                 onClick={this.addQuestion}
+                primary
+                className="ourButtons"
               />
 
-              <FlatButton
+              <RaisedButton
                 label={"Save"}
                 onClick={(event) => this.saveQuiz(event, '/')}
+                primary
+                className="ourButtons"
               />
 
-              <FlatButton
+              <RaisedButton
                 label={"Delete"}
                 onClick={this.deleteQuiz}
+                primary
+                className="ourButtons"
               />
 
-              <FlatButton
+              <RaisedButton
                 label={"Take Quiz"}
                 onClick={(event) => this.saveQuiz(event, '/take')}
+                primary
+                className="ourButtons"
               />
 
           </Card>

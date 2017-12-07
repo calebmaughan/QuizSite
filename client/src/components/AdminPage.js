@@ -13,14 +13,15 @@ const AdminPage = ({
     <CardTitle title={text.subtitle} subtitle={text.title} titleColor = "#E4EEFF" subtitleColor="#E4EEFF"/>
     <div>
       <Link to={text.link}>
-        <RaisedButton onClick={x} label ={text.buttonlabel} primary/>
+        <RaisedButton className="newButton" onClick={x} label ={text.buttonlabel} primary/>
       </Link>
     </div>
     <div>
       <br/>
       <Link to='/edit'>
         <RaisedButton
-          label ={'Edit Quiz'} 
+          className="newButton"
+          label ={'Edit Quiz'}
           primary
         />
       </Link>

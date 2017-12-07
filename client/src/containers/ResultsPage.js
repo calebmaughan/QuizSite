@@ -4,7 +4,7 @@ import { Card, CardTitle } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Results from '../components/Results.js';
 import ResultAuth from '../modules/ResultAuth.js';
-import Chart from 'chart.js';
+//import Chart from 'chart.js';
 
 
 class ResultsPage extends React.Component{
