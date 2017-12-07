@@ -20,22 +20,22 @@ const Results = ({
          <div  key={i}>
          <CardTitle title ={questions}/>
            <div>
-           <RaisedButton label={answers[i][0] } disableTouchRipple={true} >
+           <RaisedButton label={answers[i][0] } disableTouchRipple={true} primary className="results">
           {answersClickNumber[i][0]}
            </RaisedButton>
            </div>
            <div>
-            <RaisedButton label={answers[i][1] } disableTouchRipple={true} backgroundColor="#aeb7c4">
+            <RaisedButton label={answers[i][1] } disableTouchRipple={true} primary className="results">
            {answersClickNumber[i][1]}
            </RaisedButton>
            </div>
            <div>
-           <RaisedButton label={answers[i][2] } disableTouchRipple={true} >
+           <RaisedButton label={answers[i][2] } disableTouchRipple={true} primary className="results">
           {answersClickNumber[i][2]}
            </RaisedButton>
            </div>
            <div>
-           <RaisedButton label={answers[i][3] } disableTouchRipple={true} backgroundColor="#aeb7c4" >
+           <RaisedButton label={answers[i][3] } disableTouchRipple={true} primary className="results" >
           {answersClickNumber[i][3]}
            </RaisedButton>
            </div>
